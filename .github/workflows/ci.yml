@@ -55,5 +55,5 @@ jobs:
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: "**/TestResult.xml"
+          files: "**/TestResults.xml"
           fail_ci_if_error: true

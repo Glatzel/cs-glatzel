@@ -11,7 +11,7 @@
     <Platform Project="x64" />
   </Project>
   <Folder Name="/Misc/">
-    <File Path="src\Directory.Build.props" />
+    <File Path="Directory.Build.props" />
   </Folder>
   <Project Path="src\Glatzel\Glatzel.csproj">
     <Platform Project="x64" />

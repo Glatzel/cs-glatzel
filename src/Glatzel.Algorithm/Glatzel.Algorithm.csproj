@@ -3,4 +3,7 @@
 		<AssemblyName>Glatzel.Algorithm</AssemblyName>
 		<RootNamespace>Glatzel.Algorithm</RootNamespace>
 	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Bcl.HashCode" Version="1.*" />
+	</ItemGroup>
 </Project>

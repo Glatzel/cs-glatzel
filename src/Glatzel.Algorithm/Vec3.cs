@@ -39,7 +39,7 @@ public struct Vec3 : IEquatable<Vec3>
     public static Vec3 UnitX => new(1, 0, 0);
     public static Vec3 UnitY => new(0, 1, 0);
     public static Vec3 UnitZ => new(0, 0, 1);
-    public static Vec3 Zero => new();
+    public static Vec3 Zero => new(0, 0, 0);
     public double X { get; set; }
 
     public double Y { get; set; }
@@ -177,7 +177,7 @@ public struct Vec3 : IEquatable<Vec3>
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 Multiply(Vec3 v, double t, Vec3 outv)
+    public static Vec3 Multiply(Vec3 v, double t, ref Vec3 outv)
     {
         outv.X = v.X * t;
         outv.Y = v.Y * t;
@@ -192,7 +192,7 @@ public struct Vec3 : IEquatable<Vec3>
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 Multiply(Vec3 u, Vec3 v, Vec3 outv)
+    public static Vec3 Multiply(Vec3 u, Vec3 v, ref Vec3 outv)
     {
         outv.X = u.X * v.X;
         outv.Y = u.Y * v.Y;
@@ -241,7 +241,7 @@ public struct Vec3 : IEquatable<Vec3>
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vec3 operator *(Vec3 left, double right) =>
-        new(left.X - right, left.Y * right, left.Z * right);
+        new(left.X * right, left.Y * right, left.Z * right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vec3 operator /(Vec3 left, Vec3 right) =>
@@ -324,6 +324,15 @@ public struct Vec3 : IEquatable<Vec3>
         X /= t;
         Y /= t;
         Z /= t;
+        return this;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vec3 Divide(Vec3 v)
+    {
+        X /= v.X;
+        Y /= v.Y;
+        Z /= v.Z;
         return this;
     }
 

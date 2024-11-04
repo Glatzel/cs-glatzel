@@ -33,6 +33,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Cache dotnet
+        uses: actions/cache@v4
+        with:
+          lookup-only: ${{ github.event_name != 'push'}}
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-${{ hashFiles('**/csproj','**/Directory.Build.props') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
 

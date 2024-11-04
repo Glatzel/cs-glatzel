@@ -126,9 +126,9 @@ public class TestVec3
             Assert.Equal(5, result.Z);
         }
         {
-            Vec3 u = new(4, 6, 15);
-            Vec3 result = Vec3.Divide(u, 4);
-            Assert.Equal(4, result.X);
+            Vec3 u = new(3, 9, 15);
+            Vec3 result = Vec3.Divide(u, 3);
+            Assert.Equal(1, result.X);
             Assert.Equal(3, result.Y);
             Assert.Equal(5, result.Z);
         }

@@ -14,6 +14,10 @@ on:
       - edited
       - synchronize
       - ready_for_review
+    paths-ignore:
+      - "scripts/**"
+      - "misc/**"
+      - "*.md"
 
 permissions:
   pull-requests: read

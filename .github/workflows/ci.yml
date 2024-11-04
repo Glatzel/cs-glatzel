@@ -36,6 +36,7 @@ jobs:
       - name: Cache dotnet
         uses: actions/cache@v3
         with:
+          lookup-only: ${{ github.event_name != 'push'}}
           path: ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/csproj','**/Directory.Build.props') }}
           restore-keys: |

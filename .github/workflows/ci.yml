@@ -33,7 +33,7 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: build
-        run: msbuild /p:Configuration=Release /p:Platform=x64 /p:DebugSymbols=false /p:DebugType=None /t:Glatzel /restore:true
+        run: msbuild /p:Configuration=Release /p:Platform=x64 /p:DebugSymbols=false /p:DebugType=None /restore:true
 
       - name: test
         run: |

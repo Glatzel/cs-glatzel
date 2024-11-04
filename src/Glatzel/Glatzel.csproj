@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<AssemblyName>Glatzel</AssemblyName>
+		<RootNamespace>Glatzel</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="../Glatzel.Algorithm/Glatzel.Algorithm.csproj" />
+	</ItemGroup>
+</Project> 

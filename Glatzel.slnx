@@ -1,0 +1,19 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Properties Name="Visual Studio">
+    <Property Name="OpenWith" Value="17" />
+  </Properties>
+  <Project Path="src\Glatzel.Algorithm\Glatzel.Algorithm.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Folder Name="/Misc/">
+    <File Path="src\Directory.Build.props" />
+  </Folder>
+  <Project Path="src\Glatzel\Glatzel.csproj">
+    <Platform Project="x64" />
+  </Project>
+</Solution>

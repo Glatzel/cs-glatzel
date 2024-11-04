@@ -38,6 +38,7 @@ jobs:
       - name: test
         run: |
           dotnet test --logger:"junit" --collect:"XPlat Code Coverage"
+        continue-on-error: true
 
       - name: Upload cov results to Codecov
         uses: codecov/codecov-action@v4

@@ -168,13 +168,13 @@ public class TestVec3
         Vec3 v = new(3, 4, 5);
         Vec3 w = new(1, 2, 3);
         double[] x = [12, 13, 14];
-        object y = 12;
+        object y = new Vec3(1, 2, 3);
 
         {
             Assert.False(u.Equals(v));
             Assert.True(u.Equals(w));
             Assert.False(u.Equals(x));
-            Assert.False(u.Equals(y));
+            Assert.True(u.Equals(y));
         }
     }
 

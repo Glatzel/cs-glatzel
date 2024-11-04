@@ -11,29 +11,20 @@
   <Folder Name="/root/">
     <File Path="Directory.Build.props" />
   </Folder>
-  <Folder Name="/root/src/">  <Project Path="src\Glatzel.Algorithm\Glatzel.Algorithm.csproj">
-    <Platform Project="x64" />
-  </Project>
-  <Project Path="src\Glatzel\Glatzel.csproj">
-    <Platform Project="x64" />
-  </Project>
+  <Folder Name="/root/src/">
+    <Project Path="src\Glatzel.Algorithm\Glatzel.Algorithm.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="src\Glatzel\Glatzel.csproj">
+      <Platform Project="x64" />
+    </Project>
     <File Path="src\Directory.Build.props" />
-    <Project Path="D:\project\cs-glatzel\src\Glatzel.Algorithm\Glatzel.Algorithm.csproj">
-      <Platform Project="x64" />
-    </Project>
-    <Project Path="D:\project\cs-glatzel\src\Glatzel\Glatzel.csproj">
-      <Platform Project="x64" />
-    </Project>
   </Folder>
   <Folder Name="/root/tests/">
     <File Path="tests\Directory.Build.props" />
     <Project Path="tests\Glatzel.Algorithm.Test\Glatzel.Algorithm.Test.csproj">
       <Platform Project="x64" />
     </Project>
-    <Project Path="D:\project\cs-glatzel\tests\Glatzel.Algorithm.Test\Glatzel.Algorithm.Test.csproj">
-      <Platform Project="x64" />
-    </Project>
   </Folder>
-
   <Folder Name="/root/scripts/" />
 </Solution>

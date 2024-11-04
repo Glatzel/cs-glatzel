@@ -182,7 +182,7 @@ public class TestVec3
     public void TestGetHashCode()
     {
         Vec3 u = new(1, 2, 3);
-        Assert.Equal(HashCode.Combine(1, 2, 3), u.GetHashCode());
+        Assert.Equal(HashCode.Combine(1.0, 2.0, 3.0), u.GetHashCode());
     }
 
     [Fact]

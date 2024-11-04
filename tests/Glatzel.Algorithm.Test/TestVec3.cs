@@ -83,7 +83,16 @@ public class TestVec3
             Assert.Equal(3, v[2]);
             Assert.Throws<ArgumentException>(() => v[3]);
         }
-        { }
+        {
+            Vec3 v = new(1, 1, 1);
+            v[0] = 2;
+            v[1] = 3;
+            v[2] = 4;
+            Assert.Equal(2, v[0]);
+            Assert.Equal(3, v[1]);
+            Assert.Equal(4, v[2]);
+            Assert.Throws<ArgumentException>(() => v[3] = 5);
+        }
     }
 
     [Fact]

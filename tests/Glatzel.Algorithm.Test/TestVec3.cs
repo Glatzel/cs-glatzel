@@ -67,7 +67,7 @@ public class TestVec3
     [Fact]
     public void TestZero()
     {
-        Vec3 v = Vec3.UnitZ;
+        Vec3 v = Vec3.Zero;
         Assert.Equal(0, v.X);
         Assert.Equal(0, v.Y);
         Assert.Equal(0, v.Z);

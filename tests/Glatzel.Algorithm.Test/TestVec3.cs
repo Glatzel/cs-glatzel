@@ -71,6 +71,84 @@ public class TestVec3
         Assert.Equal(1, v[0]);
         Assert.Equal(2, v[1]);
         Assert.Equal(3, v[2]);
-        Assert.Throws<ArgumentOutOfRangeException>(() => v[3]);
+        Assert.Throws<ArgumentException>(() => v[3]);
+    }
+
+    [Fact]
+    public void TestAdd()
+    {
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = new(1, 2, 3);
+            Vec3 result = Vec3.Add(u, v);
+            Assert.Equal(2, result.X);
+            Assert.Equal(4, result.Y);
+            Assert.Equal(6, result.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 result = Vec3.Add(u, 4);
+            Assert.Equal(5, result.X);
+            Assert.Equal(6, result.Y);
+            Assert.Equal(7, result.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = new(1, 2, 3);
+            Vec3 result = new();
+            Vec3.Add(u, v, ref result);
+            Assert.Equal(2, result.X);
+            Assert.Equal(4, result.Y);
+            Assert.Equal(6, result.Z);
+        }
+    }
+
+    [Fact]
+    public void TestCross()
+    {
+        Vec3 u = new(1, 2, 3);
+        Vec3 v = new(2, 4, 7);
+        Vec3 result = Vec3.Cross(u, v);
+        Assert.Equal(2, result.X);
+        Assert.Equal(-1, result.Y);
+        Assert.Equal(0, result.Z);
+    }
+
+    [Fact]
+    public void TestDivide()
+    {
+        {
+            Vec3 u = new(4, 6, 15);
+            Vec3 v = new(1, 2, 3);
+            Vec3 result = Vec3.Divide(u, v);
+            Assert.Equal(4, result.X);
+            Assert.Equal(3, result.Y);
+            Assert.Equal(5, result.Z);
+        }
+        {
+            Vec3 u = new(4, 6, 15);
+            Vec3 result = Vec3.Divide(u, 4);
+            Assert.Equal(4, result.X);
+            Assert.Equal(3, result.Y);
+            Assert.Equal(5, result.Z);
+        }
+        {
+            Vec3 u = new(4, 6, 15);
+            Vec3 v = new(1, 2, 3);
+            Vec3 result = new();
+            Vec3.Divide(u, v, ref result);
+            Assert.Equal(4, result.X);
+            Assert.Equal(3, result.Y);
+            Assert.Equal(5, result.Z);
+        }
+    }
+
+    [Fact]
+    public void TestDot()
+    {
+        Vec3 u = new(1, 2, 3);
+        Vec3 v = new(3, 4, 5);
+        double result = Vec3.Dot(u, v);
+        Assert.Equal(26, result);
     }
 }

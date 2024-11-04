@@ -1,3 +1,5 @@
+using static System.Math;
+
 namespace Glatzel.Algorithm.Test;
 
 public class TestVec3
@@ -215,5 +217,151 @@ public class TestVec3
         Vec3 v = new(3, 4, 5);
         double result = Vec3.Dot(u, v);
         Assert.Equal(26, result);
+    }
+
+    [Fact]
+    public void TestLength()
+    {
+        Vec3 u = new(1, 2, 3);
+        Assert.Equal(Sqrt(14), u.Length(), 6);
+    }
+
+    [Fact]
+    public void TestLength2()
+    {
+        Vec3 u = new(1, 2, 3);
+        Assert.Equal(14, u.Length2(), 6);
+    }
+
+    [Fact]
+    public void TestMultiply()
+    {
+        {
+            Vec3 u = new(2, 3, 4);
+            Vec3 v = new(1, 2, 3);
+            Vec3 result = Vec3.Multiply(u, v);
+            Assert.Equal(2, result.X);
+            Assert.Equal(6, result.Y);
+            Assert.Equal(12, result.Z);
+        }
+        {
+            Vec3 u = new(3, 9, 15);
+            Vec3 result = Vec3.Multiply(u, 3);
+            Assert.Equal(9, result.X);
+            Assert.Equal(27, result.Y);
+            Assert.Equal(45, result.Z);
+        }
+        {
+            Vec3 u = new(4, 6, 15);
+            Vec3 v = new(1, 2, 3);
+            Vec3 result = new();
+            Vec3.Multiply(u, v, ref result);
+            Assert.Equal(4, result.X);
+            Assert.Equal(12, result.Y);
+            Assert.Equal(45, result.Z);
+        }
+        {
+            Vec3 u = new(3, 9, 15);
+            Vec3.Multiply(u, 3, ref u);
+            Assert.Equal(9, u.X);
+            Assert.Equal(27, u.Y);
+            Assert.Equal(45, u.Z);
+        }
+        {
+            Vec3 u = new(3, 9, 15);
+            u.Multiply(3);
+            Assert.Equal(9, u.X);
+            Assert.Equal(27, u.Y);
+            Assert.Equal(45, u.Z);
+        }
+        {
+            Vec3 u = new(4, 6, 15);
+            Vec3 v = new(1, 2, 3);
+            u.Multiply(v);
+            Assert.Equal(4, u.X);
+            Assert.Equal(12, u.Y);
+            Assert.Equal(45, u.Z);
+        }
+    }
+
+    [Fact]
+    public void TestNormalize()
+    {
+        Vec3 v = new(3, 4, 5);
+        Vec3 u = Vec3.Normalize(v);
+        v.Normalize();
+        Vec3 expected = new(3.0 / 5.0 / Sqrt(2), 4.0 / 5.0 / Sqrt(2), 1.0 / Sqrt(2));
+        Assert.Equal(expected.X, u.X, 6);
+        Assert.Equal(expected.Y, u.Y, 6);
+        Assert.Equal(expected.Z, u.Z, 6);
+        Assert.Equal(expected.X, v.X, 6);
+        Assert.Equal(expected.Y, v.Y, 6);
+        Assert.Equal(expected.Z, v.Z, 6);
+    }
+
+    [Fact]
+    public void TestSubtract()
+    {
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = new(1, 2, 3);
+            Vec3 result = Vec3.Subtract(u, v);
+            Assert.Equal(0, result.X);
+            Assert.Equal(0, result.Y);
+            Assert.Equal(0, result.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 result = Vec3.Subtract(u, 4);
+            Assert.Equal(-3, result.X);
+            Assert.Equal(-2, result.Y);
+            Assert.Equal(-1, result.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = new(1, 2, 3);
+            Vec3 result = new();
+            Vec3.Subtract(u, v, ref result);
+            Assert.Equal(0, result.X);
+            Assert.Equal(0, result.Y);
+            Assert.Equal(0, result.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3.Subtract(u, 4, ref u);
+            Assert.Equal(-3, u.X);
+            Assert.Equal(-2, u.Y);
+            Assert.Equal(-1, u.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            u.Subtract(4);
+            Assert.Equal(-3, u.X);
+            Assert.Equal(-2, u.Y);
+            Assert.Equal(-1, u.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = new(1, 2, 3);
+            u.Subtract(v);
+            Assert.Equal(0, u.X);
+            Assert.Equal(0, u.Y);
+            Assert.Equal(0, u.Z);
+        }
+    }
+
+    [Fact]
+    public void TestEquals()
+    {
+        Vec3 u = new(1, 2, 3);
+        Vec3 v = new(3, 4, 5);
+        Vec3 w = new(1, 2, 3);
+        double[] x = [12, 13, 14];
+
+        {
+            Assert.False(u.Equals(v));
+            Assert.True(u.Equals(w));
+            Assert.False(u.Equals(x));
+        }
     }
 }

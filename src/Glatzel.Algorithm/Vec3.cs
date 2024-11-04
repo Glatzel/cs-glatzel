@@ -177,7 +177,7 @@ public struct Vec3 : IEquatable<Vec3>
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 Multiply(Vec3 v, double t, Vec3 outv)
+    public static Vec3 Multiply(Vec3 v, double t, ref Vec3 outv)
     {
         outv.X = v.X * t;
         outv.Y = v.Y * t;
@@ -192,7 +192,7 @@ public struct Vec3 : IEquatable<Vec3>
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 Multiply(Vec3 u, Vec3 v, Vec3 outv)
+    public static Vec3 Multiply(Vec3 u, Vec3 v, ref Vec3 outv)
     {
         outv.X = u.X * v.X;
         outv.Y = u.Y * v.Y;

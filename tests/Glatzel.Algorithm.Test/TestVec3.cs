@@ -65,13 +65,25 @@ public class TestVec3
     }
 
     [Fact]
+    public void TestZero()
+    {
+        Vec3 v = Vec3.UnitZ;
+        Assert.Equal(0, v.X);
+        Assert.Equal(0, v.Y);
+        Assert.Equal(0, v.Z);
+    }
+
+    [Fact]
     public void TestIndex()
     {
-        Vec3 v = new(1, 2, 3);
-        Assert.Equal(1, v[0]);
-        Assert.Equal(2, v[1]);
-        Assert.Equal(3, v[2]);
-        Assert.Throws<ArgumentException>(() => v[3]);
+        {
+            Vec3 v = new(1, 2, 3);
+            Assert.Equal(1, v[0]);
+            Assert.Equal(2, v[1]);
+            Assert.Equal(3, v[2]);
+            Assert.Throws<ArgumentException>(() => v[3]);
+        }
+        { }
     }
 
     [Fact]
@@ -100,6 +112,13 @@ public class TestVec3
             Assert.Equal(2, result.X);
             Assert.Equal(4, result.Y);
             Assert.Equal(6, result.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3.Add(u, 4, ref u);
+            Assert.Equal(5, u.X);
+            Assert.Equal(6, u.Y);
+            Assert.Equal(7, u.Z);
         }
     }
 
@@ -140,6 +159,13 @@ public class TestVec3
             Assert.Equal(4, result.X);
             Assert.Equal(3, result.Y);
             Assert.Equal(5, result.Z);
+        }
+        {
+            Vec3 u = new(3, 9, 15);
+            Vec3.Divide(u, 3, ref u);
+            Assert.Equal(1, u.X);
+            Assert.Equal(3, u.Y);
+            Assert.Equal(5, u.Z);
         }
     }
 

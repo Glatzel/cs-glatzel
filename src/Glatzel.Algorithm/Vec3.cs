@@ -39,7 +39,7 @@ public struct Vec3 : IEquatable<Vec3>
     public static Vec3 UnitX => new(1, 0, 0);
     public static Vec3 UnitY => new(0, 1, 0);
     public static Vec3 UnitZ => new(0, 0, 1);
-    public static Vec3 Zero => new();
+    public static Vec3 Zero => new(0, 0, 0);
     public double X { get; set; }
 
     public double Y { get; set; }

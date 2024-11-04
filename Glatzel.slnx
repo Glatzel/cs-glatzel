@@ -21,5 +21,8 @@
   </Folder>
   <Folder Name="/root/tests/">
     <File Path="tests\Directory.Build.props" />
+    <Project Path="tests\Glatzel.Algorithm.Test\Glatzel.Algorithm.Test.csproj">
+      <Platform Project="x64" />
+    </Project>
   </Folder>
 </Solution>

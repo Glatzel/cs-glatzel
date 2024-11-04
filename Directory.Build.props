@@ -1,4 +1,4 @@
-﻿<Project>
+﻿<Project >
 	<PropertyGroup>
 		<Version>0.0.1</Version>
 		<LangVersion>latest</LangVersion>

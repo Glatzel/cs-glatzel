@@ -328,6 +328,15 @@ public struct Vec3 : IEquatable<Vec3>
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vec3 Divide(Vec3 v)
+    {
+        X /= v.X;
+        Y /= v.Y;
+        Z /= v.Z;
+        return this;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public readonly bool Equals(Vec3 other)
     {
         return X == other.X && Y == other.Y && Z == other.Z;

@@ -129,6 +129,21 @@ public class TestVec3
             Assert.Equal(6, u.Y);
             Assert.Equal(7, u.Z);
         }
+        {
+            Vec3 u = new(1, 2, 3);
+            u.Add(4);
+            Assert.Equal(5, u.X);
+            Assert.Equal(6, u.Y);
+            Assert.Equal(7, u.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = new(1, 2, 3);
+            u.Add(v);
+            Assert.Equal(2, u.X);
+            Assert.Equal(4, u.Y);
+            Assert.Equal(6, u.Z);
+        }
     }
 
     [Fact]
@@ -173,6 +188,21 @@ public class TestVec3
             Vec3 u = new(3, 9, 15);
             Vec3.Divide(u, 3, ref u);
             Assert.Equal(1, u.X);
+            Assert.Equal(3, u.Y);
+            Assert.Equal(5, u.Z);
+        }
+        {
+            Vec3 u = new(3, 9, 15);
+            u.Divide(3);
+            Assert.Equal(1, u.X);
+            Assert.Equal(3, u.Y);
+            Assert.Equal(5, u.Z);
+        }
+        {
+            Vec3 u = new(4, 6, 15);
+            Vec3 v = new(1, 2, 3);
+            u.Divide(v);
+            Assert.Equal(4, u.X);
             Assert.Equal(3, u.Y);
             Assert.Equal(5, u.Z);
         }

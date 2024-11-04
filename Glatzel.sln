@@ -2,14 +2,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{C841F5C2-8F30-5BE9-ECA6-260644CF6F9F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{15F6FC59-AAC4-54A0-792B-7B93FC8C81FD}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B858486B-2441-8B08-345C-F7828C338578}"
 	ProjectSection(SolutionItems) = preProject
 		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F1E2BC5E-7CAD-0B05-D18D-B2F055A57BE7}"
+	ProjectSection(SolutionItems) = preProject
+		tests\Directory.Build.props = tests\Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Glatzel.Algorithm", "src\Glatzel.Algorithm\Glatzel.Algorithm.csproj", "{7AEAC39B-9B12-B272-6F73-D0D749BA8842}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Glatzel", "src\Glatzel\Glatzel.csproj", "{CB1E37E9-B901-119E-EB4F-EA31688AFA68}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Glatzel.Algorithm.Test", "tests\Glatzel.Algorithm.Test\Glatzel.Algorithm.Test.csproj", "{521DCECA-1B0F-B4FE-5ED4-E62EC4F1E92B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,8 +37,19 @@ Global
 		{CB1E37E9-B901-119E-EB4F-EA31688AFA68}.Debug|x64.Build.0 = Debug|x64
 		{CB1E37E9-B901-119E-EB4F-EA31688AFA68}.Release|x64.ActiveCfg = Release|x64
 		{CB1E37E9-B901-119E-EB4F-EA31688AFA68}.Release|x64.Build.0 = Release|x64
+		{521DCECA-1B0F-B4FE-5ED4-E62EC4F1E92B}.Debug|x64.ActiveCfg = Debug|x64
+		{521DCECA-1B0F-B4FE-5ED4-E62EC4F1E92B}.Debug|x64.Build.0 = Debug|x64
+		{521DCECA-1B0F-B4FE-5ED4-E62EC4F1E92B}.Release|x64.ActiveCfg = Release|x64
+		{521DCECA-1B0F-B4FE-5ED4-E62EC4F1E92B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B858486B-2441-8B08-345C-F7828C338578} = {15F6FC59-AAC4-54A0-792B-7B93FC8C81FD}
+		{F1E2BC5E-7CAD-0B05-D18D-B2F055A57BE7} = {15F6FC59-AAC4-54A0-792B-7B93FC8C81FD}
+		{7AEAC39B-9B12-B272-6F73-D0D749BA8842} = {B858486B-2441-8B08-345C-F7828C338578}
+		{CB1E37E9-B901-119E-EB4F-EA31688AFA68} = {B858486B-2441-8B08-345C-F7828C338578}
+		{521DCECA-1B0F-B4FE-5ED4-E62EC4F1E92B} = {F1E2BC5E-7CAD-0B05-D18D-B2F055A57BE7}
 	EndGlobalSection
 EndGlobal

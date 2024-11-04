@@ -2,6 +2,9 @@
   "files.exclude": {
     "src/*/bin": true,
     "src/*/obj": true,
-    ".vs": true
+    "tests/*/bin": true,
+    "tests/*/obj": true,
+    ".vs": true,
+    "**/TestResults":true
   }
 }

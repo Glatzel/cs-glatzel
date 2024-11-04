@@ -27,9 +27,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  DOTNET_ROOT: './.dotnet'
-
 jobs:
   build:
     runs-on: windows-latest
@@ -37,12 +34,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Cache dotnet
-        id: cache-dotnet-core
         uses: actions/cache@v3
         with:
-          path: ${{env.DOTNET_ROOT}}
+          path: ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/csproj','**/Directory.Build.props') }}
-
+          restore-keys: |
+            ${{ runner.os }}-
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
 

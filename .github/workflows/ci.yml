@@ -40,6 +40,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/csproj','**/Directory.Build.props') }}
           restore-keys: |
             ${{ runner.os }}-
+
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
 

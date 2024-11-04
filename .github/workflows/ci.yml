@@ -30,4 +30,3 @@ jobs:
 
       - name: build
         run: msbuild /p:Configuration=Release /p:Platform=x64 /p:DebugSymbols=false /p:DebugType=None /t:Glatzel /restore:true
-

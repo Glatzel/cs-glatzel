@@ -36,8 +36,7 @@ jobs:
         run: msbuild /p:Configuration=Release /p:Platform=x64 /p:DebugSymbols=false /p:DebugType=None /restore:true
 
       - name: test
-        run: |
-          dotnet test --logger:"junit" --collect:"XPlat Code Coverage"
+        run: dotnet test --logger:"junit" --collect:"XPlat Code Coverage"
         continue-on-error: true
 
       - name: Upload cov results to Codecov

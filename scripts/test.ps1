@@ -1,3 +1,3 @@
 Set-Location $PSScriptRoot
 Set-Location ..
-dotnet test
+dotnet test --logger:"junit;LogFilePath=junit.xml"

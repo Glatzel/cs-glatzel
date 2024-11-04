@@ -241,7 +241,7 @@ public struct Vec3 : IEquatable<Vec3>
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vec3 operator *(Vec3 left, double right) =>
-        new(left.X - right, left.Y * right, left.Z * right);
+        new(left.X * right, left.Y * right, left.Z * right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vec3 operator /(Vec3 left, Vec3 right) =>

@@ -375,4 +375,121 @@ public class TestVec3
         Assert.Equal(0, v.Y);
         Assert.Equal(0, v.Z);
     }
+
+    [Fact]
+    public void TestOperator()
+    {
+        //minus
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = -u;
+            Assert.Equal(-1, v.X);
+            Assert.Equal(-2, v.Y);
+            Assert.Equal(-3, v.Z);
+        }
+        //subtract
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = new(1, 2, 3);
+            Vec3 w = u - v;
+            Assert.Equal(0, w.X);
+            Assert.Equal(0, w.Y);
+            Assert.Equal(0, w.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = 4 - u;
+            Assert.Equal(3, v.X);
+            Assert.Equal(2, v.Y);
+            Assert.Equal(1, v.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = u - 4;
+            Assert.Equal(-3, v.X);
+            Assert.Equal(-2, v.Y);
+            Assert.Equal(-1, v.Z);
+        }
+        // !=,==
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = new(1, 2, 3);
+            Vec3 w = new(4, 5, 6);
+            Assert.True(u == v);
+            Assert.False(u == w);
+            Assert.False(u != v);
+            Assert.True(u != w);
+        }
+        // multiply
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = new(1, 2, 3);
+            Vec3 w = u * v;
+            Assert.Equal(1, w.X);
+            Assert.Equal(4, w.Y);
+            Assert.Equal(9, w.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = 4 * u;
+            Assert.Equal(4, v.X);
+            Assert.Equal(8, v.Y);
+            Assert.Equal(12, v.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = u * 4;
+            Assert.Equal(4, v.X);
+            Assert.Equal(8, v.Y);
+            Assert.Equal(12, v.Z);
+        }
+        //divide
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = new(1, 2, 3);
+            Vec3 w = u / v;
+            Assert.Equal(1, w.X);
+            Assert.Equal(1, w.Y);
+            Assert.Equal(1, w.Z);
+        }
+        {
+            Vec3 u = new(1, 2, 3);
+            Vec3 v = 6 / u;
+            Assert.Equal(6, v.X);
+            Assert.Equal(3, v.Y);
+            Assert.Equal(2, v.Z);
+        }
+        {
+            Vec3 u = new(8, 4, 2);
+            Vec3 v = u / 2;
+            Assert.Equal(4, v.X);
+            Assert.Equal(2, v.Y);
+            Assert.Equal(1, v.Z);
+        }
+        //add
+        {
+            {
+                Vec3 u = new(1, 2, 3);
+                Vec3 v = new(1, 2, 3);
+                Vec3 w = u + v;
+                Assert.Equal(2, w.X);
+                Assert.Equal(4, w.Y);
+                Assert.Equal(6, w.Z);
+            }
+            {
+                Vec3 u = new(1, 2, 3);
+                Vec3 v = 4 + u;
+                Assert.Equal(5, v.X);
+                Assert.Equal(6, v.Y);
+                Assert.Equal(7, v.Z);
+            }
+            {
+                Vec3 u = new(1, 2, 3);
+                Vec3 v = u + 4;
+                Assert.Equal(5, v.X);
+                Assert.Equal(6, v.Y);
+                Assert.Equal(7, v.Z);
+            }
+        }
+    }
 }

@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{15F6FC59-A
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{CD211CBC-440C-3D8B-FFC8-D7AE7FC0977D}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B858486B-2441-8B08-345C-F7828C338578}"
 	ProjectSection(SolutionItems) = preProject
 		src\Directory.Build.props = src\Directory.Build.props
@@ -46,6 +48,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{CD211CBC-440C-3D8B-FFC8-D7AE7FC0977D} = {15F6FC59-AAC4-54A0-792B-7B93FC8C81FD}
 		{B858486B-2441-8B08-345C-F7828C338578} = {15F6FC59-AAC4-54A0-792B-7B93FC8C81FD}
 		{F1E2BC5E-7CAD-0B05-D18D-B2F055A57BE7} = {15F6FC59-AAC4-54A0-792B-7B93FC8C81FD}
 		{7AEAC39B-9B12-B272-6F73-D0D749BA8842} = {B858486B-2441-8B08-345C-F7828C338578}

@@ -7,7 +7,6 @@
   <Properties Name="Visual Studio">
     <Property Name="OpenWith" Value="17" />
   </Properties>
-
   <Folder Name="/root/">
     <File Path="Directory.Build.props" />
   </Folder>

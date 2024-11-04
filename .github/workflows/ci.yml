@@ -34,3 +34,21 @@ jobs:
 
       - name: build
         run: msbuild /p:Configuration=Release /p:Platform=x64 /p:DebugSymbols=false /p:DebugType=None /t:Glatzel /restore:true
+      
+      - name: test
+        run: |
+          dotnet test --logger:"junit" --collect:"XPlat Code Coverage"
+
+      - name: Upload cov results to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: "**/TestResult.xml"
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      # - name: Upload test results to Codecov
+      #   uses: codecov/test-results-action@v1
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}

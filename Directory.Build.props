@@ -22,7 +22,7 @@
 	</PropertyGroup>
 	<!--packages-->
 	<ItemGroup>
-		<PackageReference Include="NLog" Version="5.*" />
+		<PackageReference Include="NLog" Version="5.0.0" />
 	</ItemGroup>
 	<!--analyser-->
 	<ItemGroup>

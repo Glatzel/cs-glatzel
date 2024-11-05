@@ -55,6 +55,9 @@ public class TestBoundingBox
     }
 
     [Fact]
+    public void TestIsIntersect() { }
+
+    [Fact]
     public void TestLength()
     {
         BoundingBox bbox1 = new([1, 1, 1], [3, 5, 7]);
@@ -70,6 +73,26 @@ public class TestBoundingBox
         Assert.Equal(2, bbox1.MidX());
         Assert.Equal(3, bbox1.MidY());
         Assert.Equal(4, bbox1.MidZ());
+    }
+
+    [Fact]
+    public void TestOffset() { }
+
+    [Fact]
+    public void TestScale() { }
+
+    [Fact]
+    public void TestUnion()
+    {
+        BoundingBox bbox1 = new([1, 2, 3], [7, 8, 9]);
+        BoundingBox bbox2 = new([3, 2, 1], [7, 8, 9]);
+        BoundingBox bbox3 = new([2, 3, 1], [7, 8, 9]);
+        BoundingBox bbox4 = new([1, 1, 3], [7, 8, 9]);
+        BoundingBox bbox5 = new([1, 2, 3], [9, 8, 7]);
+        BoundingBox bbox6 = new([1, 2, 3], [8, 9, 7]);
+        BoundingBox bbox = BoundingBox.Union(bbox1, bbox2, bbox3, bbox4, bbox5, bbox6);
+        Assert.Equal(new Vec3(1, 1, 1), bbox.MinPt);
+        Assert.Equal(new Vec3(9, 9, 9), bbox.MaxPt);
     }
 
     [Fact]

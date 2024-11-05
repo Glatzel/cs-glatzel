@@ -72,8 +72,8 @@ public struct BoundingBox : IEquatable<BoundingBox>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static BoundingBox Union(params BoundingBox[] bboxs)
     {
-        Vec3 maxpt = new(x: double.MinValue, double.MinValue, double.MinValue);
-        Vec3 minpt = new(double.MaxValue, double.MaxValue, double.MaxValue);
+        Vec3 maxpt = new();
+        Vec3 minpt = new();
         List<BoundingBox> listBBox = [.. bboxs];
         maxpt.X = listBBox.Max(p => p.MaxPt.X);
         maxpt.Y = listBBox.Max(p => p.MaxPt.Y);

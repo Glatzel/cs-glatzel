@@ -116,6 +116,17 @@ public class TestBoundingBox
     }
 
     [Fact]
+    public void TestMinAxis()
+    {
+        BoundingBox bbox1 = new([0, 0, 0], [1, 2, 3]);
+        BoundingBox bbox3 = new([0, 0, 0], [2, 1, 3]);
+        BoundingBox bbox2 = new([0, 0, 0], [3, 2, 1]);
+        Assert.Equal(Axis.X, bbox1.MinAxis());
+        Assert.Equal(Axis.Y, bbox2.MinAxis());
+        Assert.Equal(Axis.Z, bbox3.MinAxis());
+    }
+
+    [Fact]
     public void TestMid()
     {
         BoundingBox bbox1 = new([1, 1, 1], [3, 5, 7]);

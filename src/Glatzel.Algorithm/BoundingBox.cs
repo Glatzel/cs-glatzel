@@ -181,6 +181,17 @@ public struct BoundingBox : IEquatable<BoundingBox>
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public readonly Axis MinAxis()
+    {
+        if (LengthX() <= LengthY() && LengthX() <= LengthZ())
+            return Axis.X;
+        else if (LengthY() <= LengthZ())
+            return Axis.Y;
+        else
+            return Axis.Z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public readonly double MidX() => (MaxPt.X + MinPt.X) / 2.0;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

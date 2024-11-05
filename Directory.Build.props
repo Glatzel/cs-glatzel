@@ -18,6 +18,8 @@
 	<PropertyGroup>
 		<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<IntermediateOutputPath>$(SolutionDir)obj\$(MSBuildProjectName)\</IntermediateOutputPath>
+		<MSBuildProjectExtensionsPath>$(SolutionDir)obj\$(MSBuildProjectName)\</MSBuildProjectExtensionsPath>
 		<OutputPath>$(SolutionDir)bin\$(MSBuildProjectName)\$(TargetFramework)\</OutputPath>
 	</PropertyGroup>
 	<!--packages-->

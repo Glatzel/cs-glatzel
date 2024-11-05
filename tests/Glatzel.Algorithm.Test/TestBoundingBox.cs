@@ -39,6 +39,11 @@ public class TestBoundingBox
             Assert.Equal(new Vec3(1, 1, 1), bbox.MaxPt);
         }
         {
+            BoundingBox bbox = new(1, 2);
+            Assert.Equal(new Vec3(1, 1, 1), bbox.MinPt);
+            Assert.Equal(new Vec3(2, 2, 2), bbox.MaxPt);
+        }
+        {
             BoundingBox bbox = new(new Vec3(-1, -1, -1), new Vec3(1, 1, 1));
             Assert.Equal(new Vec3(-1, -1, -1), bbox.MinPt);
             Assert.Equal(new Vec3(1, 1, 1), bbox.MaxPt);
@@ -92,8 +97,146 @@ public class TestBoundingBox
         }
     }
 
-    [Fact]
-    public void TestIsIntersect() { }
+    [Theory]
+    [InlineData(-3, -3, -3, 1, 1, 1, true)]
+    [InlineData(-3, -3, -3, 1, 1, 3, true)]
+    [InlineData(-3, -3, -3, 1, 3, 1, true)]
+    [InlineData(-3, -3, -3, 1, 3, 3, true)]
+    [InlineData(-3, -3, -3, 3, 1, 1, true)]
+    [InlineData(-3, -3, -3, 3, 1, 3, true)]
+    [InlineData(-3, -3, -3, 3, 3, 1, true)]
+    [InlineData(-3, -3, -3, 3, 3, 3, true)]
+    [InlineData(-3, -3, -1, 1, 1, 1, true)]
+    [InlineData(-3, -3, -1, 1, 1, 3, true)]
+    [InlineData(-3, -3, -1, 1, 3, 1, true)]
+    [InlineData(-3, -3, -1, 1, 3, 3, true)]
+    [InlineData(-3, -3, -1, 3, 1, 1, true)]
+    [InlineData(-3, -3, -1, 3, 1, 3, true)]
+    [InlineData(-3, -3, -1, 3, 3, 1, true)]
+    [InlineData(-3, -3, -1, 3, 3, 3, true)]
+    [InlineData(-3, -3, 2.5, 1, 1, 3, false)]
+    [InlineData(-3, -3, 2.5, 1, 3, 3, false)]
+    [InlineData(-3, -3, 2.5, 3, 1, 3, false)]
+    [InlineData(-3, -3, 2.5, 3, 3, 3, false)]
+    [InlineData(-3, -1, -3, 1, 1, 1, true)]
+    [InlineData(-3, -1, -3, 1, 1, 3, true)]
+    [InlineData(-3, -1, -3, 1, 3, 1, true)]
+    [InlineData(-3, -1, -3, 1, 3, 3, true)]
+    [InlineData(-3, -1, -3, 3, 1, 1, true)]
+    [InlineData(-3, -1, -3, 3, 1, 3, true)]
+    [InlineData(-3, -1, -3, 3, 3, 1, true)]
+    [InlineData(-3, -1, -3, 3, 3, 3, true)]
+    [InlineData(-3, -1, -1, 1, 1, 1, true)]
+    [InlineData(-3, -1, -1, 1, 1, 3, true)]
+    [InlineData(-3, -1, -1, 1, 3, 1, true)]
+    [InlineData(-3, -1, -1, 1, 3, 3, true)]
+    [InlineData(-3, -1, -1, 3, 1, 1, true)]
+    [InlineData(-3, -1, -1, 3, 1, 3, true)]
+    [InlineData(-3, -1, -1, 3, 3, 1, true)]
+    [InlineData(-3, -1, -1, 3, 3, 3, true)]
+    [InlineData(-3, -1, 2.5, 1, 1, 3, false)]
+    [InlineData(-3, -1, 2.5, 1, 3, 3, false)]
+    [InlineData(-3, -1, 2.5, 3, 1, 3, false)]
+    [InlineData(-3, -1, 2.5, 3, 3, 3, false)]
+    [InlineData(-3, 2.5, -3, 1, 3, 1, false)]
+    [InlineData(-3, 2.5, -3, 1, 3, 3, false)]
+    [InlineData(-3, 2.5, -3, 3, 3, 1, false)]
+    [InlineData(-3, 2.5, -3, 3, 3, 3, false)]
+    [InlineData(-3, 2.5, -1, 1, 3, 1, false)]
+    [InlineData(-3, 2.5, -1, 1, 3, 3, false)]
+    [InlineData(-3, 2.5, -1, 3, 3, 1, false)]
+    [InlineData(-3, 2.5, -1, 3, 3, 3, false)]
+    [InlineData(-3, 2.5, 2.5, 1, 3, 3, false)]
+    [InlineData(-3, 2.5, 2.5, 3, 3, 3, false)]
+    [InlineData(-1, -3, -3, 1, 1, 1, true)]
+    [InlineData(-1, -3, -3, 1, 1, 3, true)]
+    [InlineData(-1, -3, -3, 1, 3, 1, true)]
+    [InlineData(-1, -3, -3, 1, 3, 3, true)]
+    [InlineData(-1, -3, -3, 3, 1, 1, true)]
+    [InlineData(-1, -3, -3, 3, 1, 3, true)]
+    [InlineData(-1, -3, -3, 3, 3, 1, true)]
+    [InlineData(-1, -3, -3, 3, 3, 3, true)]
+    [InlineData(-1, -3, -1, 1, 1, 1, true)]
+    [InlineData(-1, -3, -1, 1, 1, 3, true)]
+    [InlineData(-1, -3, -1, 1, 3, 1, true)]
+    [InlineData(-1, -3, -1, 1, 3, 3, true)]
+    [InlineData(-1, -3, -1, 3, 1, 1, true)]
+    [InlineData(-1, -3, -1, 3, 1, 3, true)]
+    [InlineData(-1, -3, -1, 3, 3, 1, true)]
+    [InlineData(-1, -3, -1, 3, 3, 3, true)]
+    [InlineData(-1, -3, 2.5, 1, 1, 3, false)]
+    [InlineData(-1, -3, 2.5, 1, 3, 3, false)]
+    [InlineData(-1, -3, 2.5, 3, 1, 3, false)]
+    [InlineData(-1, -3, 2.5, 3, 3, 3, false)]
+    [InlineData(-1, -1, -3, 1, 1, 1, true)]
+    [InlineData(-1, -1, -3, 1, 1, 3, true)]
+    [InlineData(-1, -1, -3, 1, 3, 1, true)]
+    [InlineData(-1, -1, -3, 1, 3, 3, true)]
+    [InlineData(-1, -1, -3, 3, 1, 1, true)]
+    [InlineData(-1, -1, -3, 3, 1, 3, true)]
+    [InlineData(-1, -1, -3, 3, 3, 1, true)]
+    [InlineData(-1, -1, -3, 3, 3, 3, true)]
+    [InlineData(-1, -1, -1, 1, 1, 1, true)]
+    [InlineData(-1, -1, -1, 1, 1, 3, true)]
+    [InlineData(-1, -1, -1, 1, 3, 1, true)]
+    [InlineData(-1, -1, -1, 1, 3, 3, true)]
+    [InlineData(-1, -1, -1, 3, 1, 1, true)]
+    [InlineData(-1, -1, -1, 3, 1, 3, true)]
+    [InlineData(-1, -1, -1, 3, 3, 1, true)]
+    [InlineData(-1, -1, -1, 3, 3, 3, true)]
+    [InlineData(-1, -1, 2.5, 1, 1, 3, false)]
+    [InlineData(-1, -1, 2.5, 1, 3, 3, false)]
+    [InlineData(-1, -1, 2.5, 3, 1, 3, false)]
+    [InlineData(-1, -1, 2.5, 3, 3, 3, false)]
+    [InlineData(-1, 2.5, -3, 1, 3, 1, false)]
+    [InlineData(-1, 2.5, -3, 1, 3, 3, false)]
+    [InlineData(-1, 2.5, -3, 3, 3, 1, false)]
+    [InlineData(-1, 2.5, -3, 3, 3, 3, false)]
+    [InlineData(-1, 2.5, -1, 1, 3, 1, false)]
+    [InlineData(-1, 2.5, -1, 1, 3, 3, false)]
+    [InlineData(-1, 2.5, -1, 3, 3, 1, false)]
+    [InlineData(-1, 2.5, -1, 3, 3, 3, false)]
+    [InlineData(-1, 2.5, 2.5, 1, 3, 3, false)]
+    [InlineData(-1, 2.5, 2.5, 3, 3, 3, false)]
+    [InlineData(2.5, -3, -3, 3, 1, 1, false)]
+    [InlineData(2.5, -3, -3, 3, 1, 3, false)]
+    [InlineData(2.5, -3, -3, 3, 3, 1, false)]
+    [InlineData(2.5, -3, -3, 3, 3, 3, false)]
+    [InlineData(2.5, -3, -1, 3, 1, 1, false)]
+    [InlineData(2.5, -3, -1, 3, 1, 3, false)]
+    [InlineData(2.5, -3, -1, 3, 3, 1, false)]
+    [InlineData(2.5, -3, -1, 3, 3, 3, false)]
+    [InlineData(2.5, -3, 2.5, 3, 1, 3, false)]
+    [InlineData(2.5, -3, 2.5, 3, 3, 3, false)]
+    [InlineData(2.5, -1, -3, 3, 1, 1, false)]
+    [InlineData(2.5, -1, -3, 3, 1, 3, false)]
+    [InlineData(2.5, -1, -3, 3, 3, 1, false)]
+    [InlineData(2.5, -1, -3, 3, 3, 3, false)]
+    [InlineData(2.5, -1, -1, 3, 1, 1, false)]
+    [InlineData(2.5, -1, -1, 3, 1, 3, false)]
+    [InlineData(2.5, -1, -1, 3, 3, 1, false)]
+    [InlineData(2.5, -1, -1, 3, 3, 3, false)]
+    [InlineData(2.5, -1, 2.5, 3, 1, 3, false)]
+    [InlineData(2.5, -1, 2.5, 3, 3, 3, false)]
+    [InlineData(2.5, 2.5, -3, 3, 3, 1, false)]
+    [InlineData(2.5, 2.5, -3, 3, 3, 3, false)]
+    [InlineData(2.5, 2.5, -1, 3, 3, 1, false)]
+    [InlineData(2.5, 2.5, -1, 3, 3, 3, false)]
+    [InlineData(2.5, 2.5, 2.5, 3, 3, 3, false)]
+    public void TestIsIntersect(
+        double minX,
+        double minY,
+        double minZ,
+        double maxX,
+        double maxY,
+        double maxZ,
+        bool isIntersect
+    )
+    {
+        BoundingBox bbox = new(-2, 2);
+        BoundingBox bbox1 = new(new Vec3(minX, minY, minZ), new Vec3(maxX, maxY, maxZ));
+        Assert.Equal(isIntersect, BoundingBox.IsIntersect(bbox, bbox1));
+    }
 
     [Fact]
     public void TestLength()

@@ -422,16 +422,16 @@ public struct Vec3 : IEquatable<Vec3>, IFormattable
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public override string ToString() => ToString("G", CultureInfo.CurrentCulture);
+    public override readonly string ToString() => ToString("G", CultureInfo.CurrentCulture);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public string ToString(string format)
+    public readonly string ToString(string format)
     {
         return ToString(format, CultureInfo.CurrentCulture);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public string ToString(string format, IFormatProvider formatProvider)
+    public readonly string ToString(string format, IFormatProvider formatProvider)
     {
         string separator = NumberFormatInfo.GetInstance(formatProvider).NumberGroupSeparator;
 

@@ -264,21 +264,20 @@ public struct BoundingBox : IEquatable<BoundingBox>, IFormattable
     public readonly double Volume() => LengthX() * LengthY() * LengthZ();
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public override string ToString()
+    public override readonly string ToString()
     {
         return ToString("G", CultureInfo.CurrentCulture);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public string ToString(string format)
+    public readonly string ToString(string format)
     {
         return ToString(format, CultureInfo.CurrentCulture);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public string ToString(string format, IFormatProvider formatProvider)
+    public readonly string ToString(string format, IFormatProvider formatProvider)
     {
-        string separator = NumberFormatInfo.GetInstance(formatProvider).NumberGroupSeparator;
         return $"BoundingBox(Min: {MinPt.ToString(format, formatProvider)}, Max: {MaxPt.ToString(format, formatProvider)})";
     }
 }

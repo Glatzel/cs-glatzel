@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace Glatzel.Algorithm;
 
-public struct BoundingBox : IEquatable<BoundingBox>
+public struct BoundingBox : IEquatable<BoundingBox>, IFormattable
 {
     private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
 
@@ -261,4 +262,22 @@ public struct BoundingBox : IEquatable<BoundingBox>
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public readonly double Volume() => LengthX() * LengthY() * LengthZ();
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public override readonly string ToString()
+    {
+        return ToString("G", CultureInfo.CurrentCulture);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public readonly string ToString(string format)
+    {
+        return ToString(format, CultureInfo.CurrentCulture);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public readonly string ToString(string format, IFormatProvider formatProvider)
+    {
+        return $"BoundingBox(Min: {MinPt.ToString(format, formatProvider)}, Max: {MaxPt.ToString(format, formatProvider)})";
+    }
 }

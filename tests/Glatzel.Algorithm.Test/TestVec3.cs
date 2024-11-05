@@ -498,4 +498,14 @@ public class TestVec3
             }
         }
     }
+
+    [Fact]
+    public void TestToString()
+    {
+        Vec3 u = new(1, 2, 3);
+        Assert.Equal("Vec3<1, 2, 3>", u.ToString());
+#pragma warning disable CA1305 // 指定 IFormatProvider
+        Assert.Equal("Vec3<1, 2, 3>", u.ToString("G"));
+#pragma warning restore CA1305 // 指定 IFormatProvider
+    }
 }

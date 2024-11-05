@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 
 namespace Glatzel.Algorithm;
 
-public struct Vec3 : IEquatable<Vec3>
+public struct Vec3 : IEquatable<Vec3>, IFormattable
 {
     private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
 
@@ -417,5 +419,22 @@ public struct Vec3 : IEquatable<Vec3>
         Y -= v.Y;
         Z -= v.Z;
         return this;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public override readonly string ToString() => ToString("G", CultureInfo.CurrentCulture);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public readonly string ToString(string format)
+    {
+        return ToString(format, CultureInfo.CurrentCulture);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public readonly string ToString(string format, IFormatProvider formatProvider)
+    {
+        string separator = NumberFormatInfo.GetInstance(formatProvider).NumberGroupSeparator;
+
+        return $"Vec3<{X.ToString(format, formatProvider)}{separator} {Y.ToString(format, formatProvider)}{separator} {Z.ToString(format, formatProvider)}>";
     }
 }

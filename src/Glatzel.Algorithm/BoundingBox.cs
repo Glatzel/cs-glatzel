@@ -75,8 +75,8 @@ public struct BoundingBox : IEquatable<BoundingBox>, IFormattable
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static BoundingBox Offset(BoundingBox bbox, Vec3 MinOffset, Vec3 MaxOffset)
     {
-        var minPt = bbox.MinPt.Add(MinOffset);
-        var maxPt = bbox.MaxPt.Add(MaxOffset);
+        Vec3 minPt = bbox.MinPt.Add(MinOffset);
+        Vec3 maxPt = bbox.MaxPt.Add(MaxOffset);
         return new(minPt, maxPt);
     }
 
@@ -112,16 +112,18 @@ public struct BoundingBox : IEquatable<BoundingBox>, IFormattable
     public static BoundingBox Scale(BoundingBox bbox, Vec3 scale, Vec3 origin)
     {
         scale.Subtract(1);
-        var minPt = new Vec3(
-            bbox.MinPt.X + ((bbox.MinPt.X - origin.X) * scale.X),
-            bbox.MinPt.Y + ((bbox.MinPt.Y - origin.Y) * scale.Y),
-            bbox.MinPt.Z + ((bbox.MinPt.Z - origin.Z) * scale.Z)
-        );
-        var maxPt = new Vec3(
-            bbox.MaxPt.X + ((bbox.MaxPt.X - origin.X) * scale.X),
-            bbox.MaxPt.Y + ((bbox.MaxPt.Y - origin.Y) * scale.Y),
-            bbox.MaxPt.Z + ((bbox.MaxPt.Z - origin.Z) * scale.Z)
-        );
+        Vec3 minPt =
+            new(
+                bbox.MinPt.X + ((bbox.MinPt.X - origin.X) * scale.X),
+                bbox.MinPt.Y + ((bbox.MinPt.Y - origin.Y) * scale.Y),
+                bbox.MinPt.Z + ((bbox.MinPt.Z - origin.Z) * scale.Z)
+            );
+        Vec3 maxPt =
+            new(
+                bbox.MaxPt.X + ((bbox.MaxPt.X - origin.X) * scale.X),
+                bbox.MaxPt.Y + ((bbox.MaxPt.Y - origin.Y) * scale.Y),
+                bbox.MaxPt.Z + ((bbox.MaxPt.Z - origin.Z) * scale.Z)
+            );
         return new(minPt, maxPt);
     }
 

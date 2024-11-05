@@ -43,6 +43,8 @@ jobs:
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
+        with:
+          msbuild-architecture: x64
 
       - name: build
         run: dotnet build --configuration Release

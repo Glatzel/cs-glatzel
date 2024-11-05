@@ -108,8 +108,8 @@ public class TestBoundingBox
     public void TestMaxAxis()
     {
         BoundingBox bbox1 = new([0, 0, 0], [3, 2, 1]);
+        BoundingBox bbox2 = new([0, 0, 0], [1, 3, 1]);
         BoundingBox bbox3 = new([0, 0, 0], [1, 2, 3]);
-        BoundingBox bbox2 = new([0, 0, 0], [2, 3, 1]);
         Assert.Equal(Axis.X, bbox1.MaxAxis());
         Assert.Equal(Axis.Y, bbox2.MaxAxis());
         Assert.Equal(Axis.Z, bbox3.MaxAxis());
@@ -119,8 +119,8 @@ public class TestBoundingBox
     public void TestMinAxis()
     {
         BoundingBox bbox1 = new([0, 0, 0], [1, 2, 3]);
-        BoundingBox bbox3 = new([0, 0, 0], [2, 1, 3]);
-        BoundingBox bbox2 = new([0, 0, 0], [3, 2, 1]);
+        BoundingBox bbox2 = new([0, 0, 0], [2, 1, 3]);
+        BoundingBox bbox3 = new([0, 0, 0], [3, 2, 1]);
         Assert.Equal(Axis.X, bbox1.MinAxis());
         Assert.Equal(Axis.Y, bbox2.MinAxis());
         Assert.Equal(Axis.Z, bbox3.MinAxis());

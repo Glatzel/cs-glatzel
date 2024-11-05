@@ -9,6 +9,9 @@ public struct BoundingBox : IEquatable<BoundingBox>
 {
     private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
 
+    public Vec3 MaxPt { readonly get; set; }
+    public Vec3 MinPt { readonly get; set; }
+
     public BoundingBox()
     {
         MinPt = new Vec3(0, 0, 0);
@@ -27,24 +30,21 @@ public struct BoundingBox : IEquatable<BoundingBox>
         MaxPt = new Vec3(maxPt);
     }
 
-    public Vec3 MaxPt { get; set; }
-    public Vec3 MinPt { get; set; }
-
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static BoundingBox Intersect(params BoundingBox[] bboxs)
     {
-        Vec3 maxpt = new();
-        Vec3 minpt = new();
+        Vec3 Maxpt = new();
+        Vec3 Minpt = new();
         List<BoundingBox> listBBox = [.. bboxs];
-        maxpt.X = listBBox.Min(p => p.MaxPt.X);
-        maxpt.Y = listBBox.Min(p => p.MaxPt.Y);
-        maxpt.Z = listBBox.Min(p => p.MaxPt.Z);
+        Maxpt.X = listBBox.Min(p => p.MaxPt.X);
+        Maxpt.Y = listBBox.Min(p => p.MaxPt.Y);
+        Maxpt.Z = listBBox.Min(p => p.MaxPt.Z);
 
-        minpt.X = listBBox.Max(p => p.MinPt.X);
-        minpt.Y = listBBox.Max(p => p.MinPt.Y);
-        minpt.Z = listBBox.Max(p => p.MinPt.Z);
+        Minpt.X = listBBox.Max(p => p.MinPt.X);
+        Minpt.Y = listBBox.Max(p => p.MinPt.Y);
+        Minpt.Z = listBBox.Max(p => p.MinPt.Z);
 
-        BoundingBox outbbox = new(minpt, maxpt);
+        BoundingBox outbbox = new(Minpt, Maxpt);
         outbbox.Check();
         return outbbox;
     }
@@ -73,17 +73,17 @@ public struct BoundingBox : IEquatable<BoundingBox>
     public static BoundingBox Union(params BoundingBox[] bboxs)
     {
         Vec3 maxpt = new();
-        Vec3 minpt = new();
+        Vec3 Minpt = new();
         List<BoundingBox> listBBox = [.. bboxs];
         maxpt.X = listBBox.Max(p => p.MaxPt.X);
         maxpt.Y = listBBox.Max(p => p.MaxPt.Y);
         maxpt.Z = listBBox.Max(p => p.MaxPt.Z);
 
-        minpt.X = listBBox.Min(p => p.MinPt.X);
-        minpt.Y = listBBox.Min(p => p.MinPt.Y);
-        minpt.Z = listBBox.Min(p => p.MinPt.Z);
+        Minpt.X = listBBox.Min(p => p.MinPt.X);
+        Minpt.Y = listBBox.Min(p => p.MinPt.Y);
+        Minpt.Z = listBBox.Min(p => p.MinPt.Z);
 
-        return new BoundingBox(minpt, maxpt);
+        return new BoundingBox(Minpt, maxpt);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -141,10 +141,18 @@ public struct BoundingBox : IEquatable<BoundingBox>
     public readonly double MidZ() => (MaxPt.Z + MinPt.Z) / 2.0;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly BoundingBox Offset(double offset)
+    public BoundingBox Offset(double offset)
     {
-        MinPt.Add(-offset / 2.0);
-        MaxPt.Add(offset / 2.0);
+        MinPt = MinPt.Add(-offset / 2.0);
+        MaxPt = MaxPt.Add(offset / 2.0);
+        return this;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public BoundingBox Offset(Vec3 MinOffset, Vec3 MaxOffset)
+    {
+        MinPt = MinPt.Add(MinOffset);
+        MaxPt = MaxPt.Add(MaxOffset);
         return this;
     }
 
@@ -158,13 +166,11 @@ public struct BoundingBox : IEquatable<BoundingBox>
             MinPt.Y + ((MinPt.Y - center.Y) * scale),
             MinPt.Z + ((MinPt.Z - center.Z) * scale)
         );
-
         MaxPt = new Vec3(
             MaxPt.X + ((MaxPt.X - center.X) * scale),
             MaxPt.Y + ((MaxPt.Y - center.Y) * scale),
             MaxPt.Z + ((MaxPt.Z - center.Z) * scale)
         );
-
         return this;
     }
 

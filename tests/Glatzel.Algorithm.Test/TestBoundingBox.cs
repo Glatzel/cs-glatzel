@@ -49,8 +49,8 @@ public class TestBoundingBox
     public void TestGetHashCode()
     {
         BoundingBox bbox1 = new([-1, -1, -1], [1, 1, 1]);
-        var v1 = new Vec3(-1, -1, -1);
-        var v2 = new Vec3(1, 1, 1);
+        Vec3 v1 = new(-1.0, -1.0, -1.0);
+        Vec3 v2 = new(1.0, 1.0, 1.0);
         Assert.Equal(bbox1.GetHashCode(), HashCode.Combine(v1.GetHashCode(), v2.GetHashCode()));
     }
 
@@ -97,7 +97,21 @@ public class TestBoundingBox
     }
 
     [Fact]
-    public void TestOffset() { }
+    public void TestOffset()
+    {
+        {
+            BoundingBox bbox = new([0, 0, 0], [1, 1, 1]);
+            bbox.Offset(2);
+            Assert.Equal(new Vec3(-1, -1, -1), bbox.MinPt);
+            Assert.Equal(new Vec3(2, 2, 2), bbox.MaxPt);
+        }
+        {
+            BoundingBox bbox = new([0, 0, 0], [1, 1, 1]);
+            bbox.Offset(new Vec3(-2, -3, -1), new Vec3(2, 3, 4));
+            Assert.Equal(new Vec3(-2, -3, -1), bbox.MinPt);
+            Assert.Equal(new Vec3(3, 4, 5), bbox.MaxPt);
+        }
+    }
 
     [Fact]
     public void TestScale() { }

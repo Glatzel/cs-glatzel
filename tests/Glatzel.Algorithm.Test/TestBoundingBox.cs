@@ -111,6 +111,18 @@ public class TestBoundingBox
     public void TestOffset()
     {
         {
+            BoundingBox bbox0 = new([0, 0, 0], [1, 1, 1]);
+            var bbox = BoundingBox.Offset(bbox0, 2);
+            Assert.Equal(new Vec3(-1, -1, -1), bbox.MinPt);
+            Assert.Equal(new Vec3(2, 2, 2), bbox.MaxPt);
+        }
+        {
+            BoundingBox bbox0 = new([0, 0, 0], [1, 1, 1]);
+            var bbox = BoundingBox.Offset(bbox0, new Vec3(-2, -3, -1), new Vec3(2, 3, 4));
+            Assert.Equal(new Vec3(-2, -3, -1), bbox.MinPt);
+            Assert.Equal(new Vec3(3, 4, 5), bbox.MaxPt);
+        }
+        {
             BoundingBox bbox = new([0, 0, 0], [1, 1, 1]);
             bbox.Offset(2);
             Assert.Equal(new Vec3(-1, -1, -1), bbox.MinPt);
@@ -125,7 +137,13 @@ public class TestBoundingBox
     }
 
     [Fact]
-    public void TestScale() { }
+    public void TestScale()
+    {
+        BoundingBox bbox = new([0, 0, 0], [2, 2, 2]);
+        {
+            bbox.Scale(2);
+        }
+    }
 
     [Fact]
     public void TestUnion()

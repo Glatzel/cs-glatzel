@@ -74,6 +74,12 @@ public class TestVec3
             Assert.Equal(0, v.Z);
         }
         {
+            Vec3 v = new(3);
+            Assert.Equal(3, v.X);
+            Assert.Equal(3, v.Y);
+            Assert.Equal(3, v.Z);
+        }
+        {
             Vec3 v = new(1, 2, 3);
             Assert.Equal(1, v.X);
             Assert.Equal(2, v.Y);

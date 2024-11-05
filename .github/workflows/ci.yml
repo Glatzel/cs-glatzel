@@ -26,8 +26,7 @@ permissions:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-env:
-  DOTNET_NUGET_SIGNATURE_VERIFICATION: false
+
 jobs:
   build:
     runs-on: windows-latest
@@ -37,7 +36,6 @@ jobs:
       - name: Cache dotnet
         uses: actions/cache@v4
         with:
-          lookup-only: ${{ github.event_name != 'push'}}
           path: ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/csproj','**/Directory.Build.props') }}
           restore-keys: |

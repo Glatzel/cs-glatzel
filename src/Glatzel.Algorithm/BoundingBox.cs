@@ -11,7 +11,7 @@ public struct BoundingBox : IEquatable<BoundingBox>
 
     public BoundingBox()
     {
-        MinPt = new Vec3();
+        MinPt = new Vec3(0, 0, 0);
         MaxPt = new Vec3(1, 1, 1);
     }
 

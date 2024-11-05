@@ -25,5 +25,7 @@
       <Platform Project="x64" />
     </Project>
   </Folder>
-  <Folder Name="/root/scripts/" />
+  <Folder Name="/root/scripts/">
+    <File Path="scripts\test.ps1" />
+  </Folder>
 </Solution>

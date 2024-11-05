@@ -12,7 +12,7 @@ public struct BoundingBox : IEquatable<BoundingBox>
     public BoundingBox()
     {
         MinPt = new Vec3();
-        MaxPt = new Vec3();
+        MaxPt = new Vec3(1, 1, 1);
     }
 
     public BoundingBox(Vec3 minPt, Vec3 maxPt)
@@ -108,7 +108,8 @@ public struct BoundingBox : IEquatable<BoundingBox>
         obj is BoundingBox boundingBox && Equals(boundingBox);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public override readonly int GetHashCode() => HashCode.Combine(MinPt, MaxPt);
+    public override readonly int GetHashCode() =>
+        HashCode.Combine(MinPt.GetHashCode(), MaxPt.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public readonly double LengthX() => MaxPt.X - MinPt.X;

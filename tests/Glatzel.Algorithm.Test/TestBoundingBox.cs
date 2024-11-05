@@ -333,10 +333,17 @@ public class TestBoundingBox
         }
         {
             BoundingBox bbox = new([0, 0, 0], [3, 3, 3]);
-            Vec3 origin = new Vec3(1, 1, 1);
+            Vec3 origin = new(1, 1, 1);
             bbox.Scale(new Vec3(2, 3, 4), origin);
             Assert.Equal(new Vec3(-1, -2, -3), bbox.MinPt);
             Assert.Equal(new Vec3(5, 7, 9), bbox.MaxPt);
+        }
+        {
+            BoundingBox bbox = new([0, 0, 0], [3, 3, 3]);
+            Vec3 origin = new(1, 1, 1);
+            bbox.Scale(2, origin);
+            Assert.Equal(new Vec3(-1, -1, -1), bbox.MinPt);
+            Assert.Equal(new Vec3(5, 5, 5), bbox.MaxPt);
         }
         {
             BoundingBox bbox0 = new([0, 0, 0], [2, 2, 2]);
@@ -352,10 +359,17 @@ public class TestBoundingBox
         }
         {
             BoundingBox bbox0 = new([0, 0, 0], [3, 3, 3]);
-            Vec3 origin = new Vec3(1, 1, 1);
+            Vec3 origin = new(1, 1, 1);
             var bbox = BoundingBox.Scale(bbox0, new Vec3(2, 3, 4), origin);
             Assert.Equal(new Vec3(-1, -2, -3), bbox.MinPt);
             Assert.Equal(new Vec3(5, 7, 9), bbox.MaxPt);
+        }
+        {
+            BoundingBox bbox0 = new([0, 0, 0], [3, 3, 3]);
+            Vec3 origin = new(1);
+            var bbox = BoundingBox.Scale(bbox0, 2, origin);
+            Assert.Equal(new Vec3(-1, -1, -1), bbox.MinPt);
+            Assert.Equal(new Vec3(5, 5, 5), bbox.MaxPt);
         }
     }
 

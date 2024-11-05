@@ -14,6 +14,13 @@ public struct Vec3 : IEquatable<Vec3>
         Z = 0;
     }
 
+    public Vec3(double scalar)
+    {
+        X = scalar;
+        Y = scalar;
+        Z = scalar;
+    }
+
     public Vec3(double x, double y, double z)
     {
         X = x;

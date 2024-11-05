@@ -156,9 +156,29 @@ public class TestBoundingBox
     [Fact]
     public void TestScale()
     {
-        BoundingBox bbox = new([0, 0, 0], [2, 2, 2]);
         {
+            BoundingBox bbox = new([0, 0, 0], [2, 2, 2]);
             bbox.Scale(2);
+            Assert.Equal(new Vec3(-1, -1, -1), bbox.MinPt);
+            Assert.Equal(new Vec3(3, 3, 3), bbox.MaxPt);
+        }
+        {
+            BoundingBox bbox = new([0, 0, 0], [2, 2, 2]);
+            bbox.Scale(new Vec3(2, 3, 4));
+            Assert.Equal(new Vec3(-1, -2, -3), bbox.MinPt);
+            Assert.Equal(new Vec3(3, 4, 5), bbox.MaxPt);
+        }
+        {
+            BoundingBox bbox0 = new([0, 0, 0], [2, 2, 2]);
+            var bbox = BoundingBox.Scale(bbox0, 2);
+            Assert.Equal(new Vec3(-1, -1, -1), bbox.MinPt);
+            Assert.Equal(new Vec3(3, 3, 3), bbox.MaxPt);
+        }
+        {
+            BoundingBox bbox0 = new([0, 0, 0], [2, 2, 2]);
+            var bbox = BoundingBox.Scale(bbox0, new Vec3(2, 3, 4));
+            Assert.Equal(new Vec3(-1, -2, -3), bbox.MinPt);
+            Assert.Equal(new Vec3(3, 4, 5), bbox.MaxPt);
         }
     }
 

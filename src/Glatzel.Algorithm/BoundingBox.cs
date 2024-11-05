@@ -9,9 +9,6 @@ public struct BoundingBox : IEquatable<BoundingBox>
 {
     private static readonly NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
 
-    public Vec3 MaxPt { readonly get; set; }
-    public Vec3 MinPt { readonly get; set; }
-
     public BoundingBox()
     {
         MinPt = new Vec3(0, 0, 0);
@@ -29,6 +26,9 @@ public struct BoundingBox : IEquatable<BoundingBox>
         MinPt = new Vec3(minPt);
         MaxPt = new Vec3(maxPt);
     }
+
+    public Vec3 MaxPt { readonly get; set; }
+    public Vec3 MinPt { readonly get; set; }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static BoundingBox Intersect(params BoundingBox[] bboxs)
@@ -170,6 +170,58 @@ public struct BoundingBox : IEquatable<BoundingBox>
             MaxPt.X + ((MaxPt.X - center.X) * scale),
             MaxPt.Y + ((MaxPt.Y - center.Y) * scale),
             MaxPt.Z + ((MaxPt.Z - center.Z) * scale)
+        );
+        return this;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public BoundingBox Scale(double scale, Vec3 origin)
+    {
+        scale--;
+        MinPt = new Vec3(
+            MinPt.X + ((MinPt.X - origin.X) * scale),
+            MinPt.Y + ((MinPt.Y - origin.Y) * scale),
+            MinPt.Z + ((MinPt.Z - origin.Z) * scale)
+        );
+        MaxPt = new Vec3(
+            MaxPt.X + ((MaxPt.X - origin.X) * scale),
+            MaxPt.Y + ((MaxPt.Y - origin.Y) * scale),
+            MaxPt.Z + ((MaxPt.Z - origin.Z) * scale)
+        );
+        return this;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public BoundingBox Scale(Vec3 scale)
+    {
+        Vec3 center = Center();
+        scale.Subtract(1);
+        MinPt = new Vec3(
+            MinPt.X + ((MinPt.X - center.X) * scale.X),
+            MinPt.Y + ((MinPt.Y - center.Y) * scale.Y),
+            MinPt.Z + ((MinPt.Z - center.Z) * scale.Z)
+        );
+        MaxPt = new Vec3(
+            MaxPt.X + ((MaxPt.X - center.X) * scale.X),
+            MaxPt.Y + ((MaxPt.Y - center.Y) * scale.Y),
+            MaxPt.Z + ((MaxPt.Z - center.Z) * scale.Z)
+        );
+        return this;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public BoundingBox Scale(Vec3 scale, Vec3 origin)
+    {
+        scale.Subtract(1);
+        MinPt = new Vec3(
+            MinPt.X + ((MinPt.X - origin.X) * scale.X),
+            MinPt.Y + ((MinPt.Y - origin.Y) * scale.Y),
+            MinPt.Z + ((MinPt.Z - origin.Z) * scale.Z)
+        );
+        MaxPt = new Vec3(
+            MaxPt.X + ((MaxPt.X - origin.X) * scale.X),
+            MaxPt.Y + ((MaxPt.Y - origin.Y) * scale.Y),
+            MaxPt.Z + ((MaxPt.Z - origin.Z) * scale.Z)
         );
         return this;
     }

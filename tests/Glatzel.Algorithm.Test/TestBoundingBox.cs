@@ -76,6 +76,23 @@ public class TestBoundingBox
     }
 
     [Fact]
+    public void TestIntersect()
+    {
+        {
+            BoundingBox bbox1 = new([1, 0, 2], [2, 5, 3]);
+            BoundingBox bbox2 = new([0, 1, 0], [2, 4, 4]);
+            BoundingBox bbox = BoundingBox.Intersect(bbox1, bbox2);
+            Assert.Equal(new Vec3(1, 1, 2), bbox.MinPt);
+            Assert.Equal(new Vec3(2, 4, 3), bbox.MaxPt);
+        }
+        {
+            BoundingBox bbox1 = new([1, 0, 2], [2, 5, 3]);
+            BoundingBox bbox2 = new([3, 1, 0], [2, 4, 4]);
+            Assert.ThrowsAny<Exception>(() => BoundingBox.Intersect(bbox1, bbox2));
+        }
+    }
+
+    [Fact]
     public void TestIsIntersect() { }
 
     [Fact]

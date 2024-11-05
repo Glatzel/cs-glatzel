@@ -33,18 +33,18 @@ public struct BoundingBox : IEquatable<BoundingBox>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static BoundingBox Intersect(params BoundingBox[] bboxs)
     {
-        Vec3 Maxpt = new();
-        Vec3 Minpt = new();
+        Vec3 minPt = new();
+        Vec3 maxPt = new();
         List<BoundingBox> listBBox = [.. bboxs];
-        Maxpt.X = listBBox.Min(p => p.MaxPt.X);
-        Maxpt.Y = listBBox.Min(p => p.MaxPt.Y);
-        Maxpt.Z = listBBox.Min(p => p.MaxPt.Z);
+        minPt.X = listBBox.Min(p => p.MaxPt.X);
+        minPt.Y = listBBox.Min(p => p.MaxPt.Y);
+        minPt.Z = listBBox.Min(p => p.MaxPt.Z);
 
-        Minpt.X = listBBox.Max(p => p.MinPt.X);
-        Minpt.Y = listBBox.Max(p => p.MinPt.Y);
-        Minpt.Z = listBBox.Max(p => p.MinPt.Z);
+        maxPt.X = listBBox.Max(p => p.MinPt.X);
+        maxPt.Y = listBBox.Max(p => p.MinPt.Y);
+        maxPt.Z = listBBox.Max(p => p.MinPt.Z);
 
-        BoundingBox outbbox = new(Minpt, Maxpt);
+        BoundingBox outbbox = new(maxPt, minPt);
         outbbox.Check();
         return outbbox;
     }

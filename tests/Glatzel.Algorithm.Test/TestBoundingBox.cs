@@ -393,4 +393,11 @@ public class TestBoundingBox
         BoundingBox bbox1 = new([1, 1, 1], [3, 5, 7]);
         Assert.Equal(48, bbox1.Volume());
     }
+
+    [Fact]
+    public void TestToString()
+    {
+        BoundingBox bbox = new([-1, -1, -1], [1, 1, 1]);
+        Assert.Equal("BoundingBox(Min: Vec3<-1, -1, -1>, Max: Vec3<1, 1, 1>)", bbox.ToString());
+    }
 }

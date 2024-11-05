@@ -54,7 +54,7 @@ jobs:
         run: dotnet test --logger:"junit" --collect:"XPlat Code Coverage"
 
       - name: Upload cov results to Codecov
-        if: ${{!cancelled()}}
+        if: ${{ !cancelled() }}
         uses: codecov/codecov-action@v4
         with:
           fail_ci_if_error: true
@@ -63,7 +63,7 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload test results to Codecov
-        if: ${{!cancelled()}}
+        if: ${{ !cancelled() }}
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

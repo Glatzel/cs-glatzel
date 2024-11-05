@@ -26,7 +26,8 @@ permissions:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
+env:
+  DOTNET_NUGET_SIGNATURE_VERIFICATION: false
 jobs:
   build:
     runs-on: windows-latest

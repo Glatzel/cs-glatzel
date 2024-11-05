@@ -3,6 +3,6 @@
 		<RootNamespace>Glatzel.Algorithm.Test</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="$(SolutionDir)src/Glatzel.Algorithm/Glatzel.Algorithm.csproj" />
+		<ProjectReference Include="../../src/Glatzel.Algorithm/Glatzel.Algorithm.csproj" />
 	</ItemGroup>
 </Project>

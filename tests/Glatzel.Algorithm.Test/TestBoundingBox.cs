@@ -9,25 +9,34 @@ public class TestBoundingBox
         Assert.Equal(new Vec3(2, 3, 4), bbox1.Center());
     }
 
-    [Fact]
-    public void TestCheck()
+    [Theory]
+    [InlineData(0, 0, 0, 1, 1, 1, true)]
+    [InlineData(2, 0, 0, 1, 1, 1, false)]
+    [InlineData(0, 2, 0, 1, 1, 1, false)]
+    [InlineData(0, 0, 2, 1, 1, 1, false)]
+    [InlineData(2, 2, 0, 1, 1, 1, false)]
+    [InlineData(2, 0, 2, 1, 1, 1, false)]
+    [InlineData(0, 2, 2, 1, 1, 1, false)]
+    [InlineData(2, 2, 2, 1, 1, 1, false)]
+    public void TestCheck(
+        double minX,
+        double minY,
+        double minZ,
+        double maxX,
+        double maxY,
+        double maxZ,
+        bool result
+    )
     {
-        BoundingBox bbox1 = new([0, 0, 0], [1, 1, 1]);
-        BoundingBox bbox2 = new([2, 0, 0], [1, 1, 1]);
-        BoundingBox bbox3 = new([0, 2, 0], [1, 1, 1]);
-        BoundingBox bbox4 = new([0, 0, 2], [1, 1, 1]);
-        BoundingBox bbox5 = new([2, 2, 0], [1, 1, 1]);
-        BoundingBox bbox6 = new([2, 0, 2], [1, 1, 1]);
-        BoundingBox bbox7 = new([0, 2, 2], [1, 1, 1]);
-        BoundingBox bbox8 = new([2, 2, 2], [1, 1, 1]);
-        bbox1.Check();
-        Assert.ThrowsAny<Exception>(bbox2.Check);
-        Assert.ThrowsAny<Exception>(bbox3.Check);
-        Assert.ThrowsAny<Exception>(bbox4.Check);
-        Assert.ThrowsAny<Exception>(bbox5.Check);
-        Assert.ThrowsAny<Exception>(bbox6.Check);
-        Assert.ThrowsAny<Exception>(bbox7.Check);
-        Assert.ThrowsAny<Exception>(bbox8.Check);
+        BoundingBox bbox = new([minX, minY, minZ], [maxX, maxY, maxZ]);
+        if (result)
+        {
+            bbox.Check();
+        }
+        else
+        {
+            Assert.ThrowsAny<Exception>(bbox.Check);
+        }
     }
 
     [Fact]

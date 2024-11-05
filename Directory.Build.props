@@ -10,6 +10,7 @@
 		<AnalysisLevel>latest-Recommended</AnalysisLevel>
 		<CSharpier_LogLevel>Warning</CSharpier_LogLevel>
 		<TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
+		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
 	</PropertyGroup>
 	<PropertyGroup Condition="$(Configuration)=='Release'">
 		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>

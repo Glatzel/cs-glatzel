@@ -5,9 +5,9 @@ on:
   push:
     branches: main
     paths-ignore:
-    - "scripts/**"
-    - "misc/**"
-    - "*.md"
+      - "scripts/**"
+      - "misc/**"
+      - "*.md"
   pull_request:
     types:
       - opened
@@ -38,7 +38,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ~/.nuget/packages
-          key: ${{ runner.os }}-${{ hashFiles('**/csproj','**/Directory.Build.props') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-
 
@@ -71,6 +71,7 @@ jobs:
           fail_ci_if_error: true
 
       - uses: actions/cache/save@v4
+        if: ${{ github.event_name == 'push' }}
         with:
-            path: ~/.nuget/packages
-            key: ${{ steps.restore-cache.outputs.cache-primary-key }}
+          path: ~/.nuget/packages
+          key: ${{ steps.restore-cache.outputs.cache-primary-key }}

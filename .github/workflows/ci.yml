@@ -33,8 +33,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache dotnet
-        uses: actions/cache@v4
+      - name: restore dotnet cache
+        id: restore-cache
+        uses: actions/cache/restore@v4
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/csproj','**/Directory.Build.props') }}
@@ -68,3 +69,8 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: "**/TestResults.xml"
           fail_ci_if_error: true
+      
+      - uses: actions/cache/save@v4
+        with:
+            path: ~/.nuget/packages
+            key: ${{ steps.restore-cache.outputs.cache-primary-key }}

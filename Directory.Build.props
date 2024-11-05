@@ -13,12 +13,16 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="$(Configuration)=='Release'">
 		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
 	</PropertyGroup>
 	<!--output path-->
 	<PropertyGroup>
 		<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-		<OutputPath>$(SolutionDir)bin\$(MSBuildProjectName)\$(TargetFramework)\</OutputPath>
+		<IntermediateOutputPath>$(SolutionDir)obj\$(MSBuildProjectName)\</IntermediateOutputPath>
+		<MSBuildProjectExtensionsPath>$(SolutionDir)obj\$(MSBuildProjectName)\</MSBuildProjectExtensionsPath>
+		<OutputPath>$(SolutionDir)bin\$(MSBuildProjectName)\</OutputPath>
 	</PropertyGroup>
 	<!--packages-->
 	<ItemGroup>

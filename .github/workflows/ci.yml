@@ -36,7 +36,6 @@ jobs:
       - name: Cache dotnet
         uses: actions/cache@v4
         with:
-          lookup-only: ${{ github.event_name != 'push'}}
           path: ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/csproj','**/Directory.Build.props') }}
           restore-keys: |
@@ -46,7 +45,7 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: build
-        run: msbuild /p:Configuration=Release /p:Platform=x64 /p:DebugSymbols=false /p:DebugType=None /restore:true /maxcpucount
+        run: dotnet build --configuration Release
 
       - name: test
         run: dotnet test --logger:"junit" --collect:"XPlat Code Coverage"

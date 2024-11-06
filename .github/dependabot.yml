@@ -14,3 +14,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      all:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "xunit.runner.visualstudio"
+          - "xunit.v3"

@@ -34,16 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: restore dotnet cache (push)
-        if: ${{ github.event_name == 'push' }}
-        id: restore-cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: nuget-${{ runner.os }}-${{ hashFiles('**/*lock.json') }}
-
-      - name: restore dotnet cache (pull_request)
-        if: ${{ github.event_name == 'pull_request' }}
+      - name: restore dotnet cache
         uses: actions/cache/restore@v4
         with:
           path: ~/.nuget/packages

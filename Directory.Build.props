@@ -28,23 +28,23 @@
 	</PropertyGroup>
 	<!--packages-->
 	<ItemGroup>
-		<PackageReference Include="NLog" Version="5.0.0" />
+		<PackageReference Include="NLog" Version="5.3.4" />
 	</ItemGroup>
 	<!--analyser-->
 	<ItemGroup>
-		<PackageReference Include="CSharpier.MsBuild" Version="0.28.0">
+		<PackageReference Include="CSharpier.MsBuild" Version="0.29.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Roslynator.Analyzers" Version="4.0.0">
+		<PackageReference Include="Roslynator.Analyzers" Version="4.12.9">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.0.0">
+		<PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.12.9">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.0.0">
+		<PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.12.9">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>

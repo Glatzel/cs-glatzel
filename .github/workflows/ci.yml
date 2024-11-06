@@ -40,14 +40,14 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ~/.nuget/packages
-          key: nuget-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*lock.json') }}
 
       - name: restore dotnet cache (pull_request)
         if: ${{ github.event_name == 'pull_request' }}
         uses: actions/cache/restore@v4
         with:
           path: ~/.nuget/packages
-          key: nuget-${{ runner.os }}-${{ hashFiles('**/packages.lock.json') }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*lock.json') }}
           restore-keys: nuget-${{ runner.os }}
 
       - name: Add msbuild to PATH

@@ -10,6 +10,8 @@
 		<AnalysisLevel>latest-Recommended</AnalysisLevel>
 		<CSharpier_LogLevel>Warning</CSharpier_LogLevel>
 		<TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
+		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+		<RestoreLockedMode Condition="'$(GITHUB_ACTIONS)' == 'true'">true</RestoreLockedMode>
 	</PropertyGroup>
 	<PropertyGroup Condition="$(Configuration)=='Release'">
 		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>

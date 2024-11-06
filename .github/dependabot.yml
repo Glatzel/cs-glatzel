@@ -18,6 +18,6 @@ updates:
       all:
         patterns:
           - "*"
-        exclude-patterns:
-          - "xunit.runner.visualstudio"
-          - "xunit.v3"
+    ignore:
+      - dependency-name: "xunit.runner.visualstudio"
+      - dependency-name: "xunit.v3"

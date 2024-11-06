@@ -37,7 +37,7 @@ jobs:
       - name: restore dotnet cache (push)
         if: ${{ github.event_name == 'push' }}
         id: restore-cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache@v4
         with:
           path: ~/.nuget/packages
           key: nuget-${{ runner.os }}-${{ hashFiles('**/*lock.json') }}
@@ -75,10 +75,3 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: "**/TestResults.xml"
           fail_ci_if_error: true
-
-      - name: save dotnet cache (push)
-        uses: actions/cache/save@v4
-        if: ${{ github.event_name == 'push' && !steps.restore-cache.outputs.cache-hit }}
-        with:
-          path: ~/.nuget/packages
-          key: ${{ steps.restore-cache.outputs.cache-primary-key }}

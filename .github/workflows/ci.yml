@@ -80,7 +80,7 @@ jobs:
 
       - name: save dotnet cache (push)
         uses: actions/cache/save@v4
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && !steps.restore-cache.outputs.cache-hit }}
         with:
           path: ~/.nuget/packages
           key: ${{ steps.restore-cache.outputs.cache-primary-key }}

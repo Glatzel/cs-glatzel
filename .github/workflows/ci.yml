@@ -78,12 +78,8 @@ jobs:
           files: "**/TestResults.xml"
           fail_ci_if_error: true
 
-<<<<<<< HEAD
       - name: save dotnet cache (push)
         uses: actions/cache/save@v4
-=======
-      - uses: actions/cache/save@v4
->>>>>>> 9ae1a5ed3cba799fa53cb7727c2abbf3ed87dc93
         if: ${{ github.event_name == 'push' }}
         with:
           path: ~/.nuget/packages

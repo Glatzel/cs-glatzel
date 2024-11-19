@@ -56,25 +56,11 @@ public struct Vec3 : IEquatable<Vec3>, IFormattable
 
     public double this[int idx]
     {
-        readonly get
-        {
-            if (idx == 0)
-            {
-                return X;
-            }
-            else if (idx == 1)
-            {
-                return Y;
-            }
-            else if (idx == 2)
-            {
-                return Z;
-            }
-            else
-            {
-                throw new ArgumentException($"Unknown index: {idx}");
-            }
-        }
+        readonly get =>
+            idx == 0 ? X
+            : idx == 1 ? Y
+            : idx == 2 ? Z
+            : throw new ArgumentException($"Unknown index: {idx}");
         set
         {
             if (idx == 0)
@@ -85,13 +71,9 @@ public struct Vec3 : IEquatable<Vec3>, IFormattable
             {
                 Y = value;
             }
-            else if (idx == 2)
-            {
-                Z = value;
-            }
             else
             {
-                throw new ArgumentException($"Unknown index: {idx}");
+                Z = idx == 2 ? value : throw new ArgumentException($"Unknown index: {idx}");
             }
         }
     }
@@ -222,61 +204,94 @@ public struct Vec3 : IEquatable<Vec3>, IFormattable
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator -(Vec3 v) => new(-v.X, -v.Y, -v.Z);
+    public static Vec3 operator -(Vec3 v)
+    {
+        return new(-v.X, -v.Y, -v.Z);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator -(Vec3 left, Vec3 right) =>
-        new(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
+    public static Vec3 operator -(Vec3 left, Vec3 right)
+    {
+        return new(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator -(double left, Vec3 right) =>
-        new(left - right.X, left - right.Y, left - right.Z);
+    public static Vec3 operator -(double left, Vec3 right)
+    {
+        return new(left - right.X, left - right.Y, left - right.Z);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator -(Vec3 left, double right) =>
-        new(left.X - right, left.Y - right, left.Z - right);
+    public static Vec3 operator -(Vec3 left, double right)
+    {
+        return new(left.X - right, left.Y - right, left.Z - right);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static bool operator !=(Vec3 left, Vec3 right) => !(left == right);
+    public static bool operator !=(Vec3 left, Vec3 right)
+    {
+        return !(left == right);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator *(Vec3 left, Vec3 right) =>
-        new(left.X * right.X, left.Y * right.Y, left.Z * right.Z);
+    public static Vec3 operator *(Vec3 left, Vec3 right)
+    {
+        return new(left.X * right.X, left.Y * right.Y, left.Z * right.Z);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator *(double left, Vec3 right) =>
-        new(left * right.X, left * right.Y, left * right.Z);
+    public static Vec3 operator *(double left, Vec3 right)
+    {
+        return new(left * right.X, left * right.Y, left * right.Z);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator *(Vec3 left, double right) =>
-        new(left.X * right, left.Y * right, left.Z * right);
+    public static Vec3 operator *(Vec3 left, double right)
+    {
+        return new(left.X * right, left.Y * right, left.Z * right);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator /(Vec3 left, Vec3 right) =>
-        new(left.X / right.X, left.Y / right.Y, left.Z / right.Z);
+    public static Vec3 operator /(Vec3 left, Vec3 right)
+    {
+        return new(left.X / right.X, left.Y / right.Y, left.Z / right.Z);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator /(double left, Vec3 right) =>
-        new(left / right.X, left / right.Y, left / right.Z);
+    public static Vec3 operator /(double left, Vec3 right)
+    {
+        return new(left / right.X, left / right.Y, left / right.Z);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator /(Vec3 left, double right) =>
-        new(left.X / right, left.Y / right, left.Z / right);
+    public static Vec3 operator /(Vec3 left, double right)
+    {
+        return new(left.X / right, left.Y / right, left.Z / right);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator +(Vec3 left, Vec3 right) =>
-        new(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+    public static Vec3 operator +(Vec3 left, Vec3 right)
+    {
+        return new(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator +(double left, Vec3 right) =>
-        new(left + right.X, left + right.Y, left + right.Z);
+    public static Vec3 operator +(double left, Vec3 right)
+    {
+        return new(left + right.X, left + right.Y, left + right.Z);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vec3 operator +(Vec3 left, double right) =>
-        new(left.X + right, left.Y + right, left.Z + right);
+    public static Vec3 operator +(Vec3 left, double right)
+    {
+        return new(left.X + right, left.Y + right, left.Z + right);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static bool operator ==(Vec3 left, Vec3 right) => left.Equals(right);
+    public static bool operator ==(Vec3 left, Vec3 right)
+    {
+        return left.Equals(right);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vec3 Subtract(Vec3 v1, Vec3 v2)
@@ -421,7 +436,10 @@ public struct Vec3 : IEquatable<Vec3>, IFormattable
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public override readonly string ToString() => ToString("G", CultureInfo.CurrentCulture);
+    public override readonly string ToString()
+    {
+        return ToString("G", CultureInfo.CurrentCulture);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public readonly string ToString(string format)

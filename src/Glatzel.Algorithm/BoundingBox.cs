@@ -58,13 +58,15 @@ public struct BoundingBox : IEquatable<BoundingBox>, IFormattable
 
     //https://developer.mozilla.org/en-US/docs/Games/Techniques/3D_collision_detection#aabb_vs._aabb
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static bool IsIntersect(BoundingBox bbox1, BoundingBox bbox2) =>
-        bbox1.MinPt.X <= bbox2.MaxPt.X
-        && bbox1.MaxPt.X >= bbox2.MinPt.X
-        && bbox1.MinPt.Y <= bbox2.MaxPt.Y
-        && bbox1.MaxPt.Y >= bbox2.MinPt.Y
-        && bbox1.MinPt.Z <= bbox2.MaxPt.Z
-        && bbox1.MaxPt.Z >= bbox2.MinPt.Z;
+    public static bool IsIntersect(BoundingBox bbox1, BoundingBox bbox2)
+    {
+        return bbox1.MinPt.X <= bbox2.MaxPt.X
+            && bbox1.MaxPt.X >= bbox2.MinPt.X
+            && bbox1.MinPt.Y <= bbox2.MaxPt.Y
+            && bbox1.MaxPt.Y >= bbox2.MinPt.Y
+            && bbox1.MinPt.Z <= bbox2.MaxPt.Z
+            && bbox1.MaxPt.Z >= bbox2.MinPt.Z;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static BoundingBox Offset(BoundingBox bbox, double offset)
@@ -112,18 +114,16 @@ public struct BoundingBox : IEquatable<BoundingBox>, IFormattable
     public static BoundingBox Scale(BoundingBox bbox, Vec3 scale, Vec3 origin)
     {
         scale.Subtract(1);
-        Vec3 minPt =
-            new(
-                bbox.MinPt.X + ((bbox.MinPt.X - origin.X) * scale.X),
-                bbox.MinPt.Y + ((bbox.MinPt.Y - origin.Y) * scale.Y),
-                bbox.MinPt.Z + ((bbox.MinPt.Z - origin.Z) * scale.Z)
-            );
-        Vec3 maxPt =
-            new(
-                bbox.MaxPt.X + ((bbox.MaxPt.X - origin.X) * scale.X),
-                bbox.MaxPt.Y + ((bbox.MaxPt.Y - origin.Y) * scale.Y),
-                bbox.MaxPt.Z + ((bbox.MaxPt.Z - origin.Z) * scale.Z)
-            );
+        Vec3 minPt = new(
+            bbox.MinPt.X + ((bbox.MinPt.X - origin.X) * scale.X),
+            bbox.MinPt.Y + ((bbox.MinPt.Y - origin.Y) * scale.Y),
+            bbox.MinPt.Z + ((bbox.MinPt.Z - origin.Z) * scale.Z)
+        );
+        Vec3 maxPt = new(
+            bbox.MaxPt.X + ((bbox.MaxPt.X - origin.X) * scale.X),
+            bbox.MaxPt.Y + ((bbox.MaxPt.Y - origin.Y) * scale.Y),
+            bbox.MaxPt.Z + ((bbox.MaxPt.Z - origin.Z) * scale.Z)
+        );
         return new(minPt, maxPt);
     }
 
@@ -145,7 +145,10 @@ public struct BoundingBox : IEquatable<BoundingBox>, IFormattable
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly Vec3 Center() => new(MidX(), MidY(), MidZ());
+    public readonly Vec3 Center()
+    {
+        return new(MidX(), MidY(), MidZ());
+    }
 
     public readonly void Check()
     {
@@ -159,55 +162,74 @@ public struct BoundingBox : IEquatable<BoundingBox>, IFormattable
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly bool Equals(BoundingBox other) => MinPt == other.MinPt && MaxPt == other.MaxPt;
+    public readonly bool Equals(BoundingBox other)
+    {
+        return MinPt == other.MinPt && MaxPt == other.MaxPt;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public override readonly bool Equals(object obj) =>
-        obj is BoundingBox boundingBox && Equals(boundingBox);
+    public override readonly bool Equals(object obj)
+    {
+        return obj is BoundingBox boundingBox && Equals(boundingBox);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public override readonly int GetHashCode() =>
-        HashCode.Combine(MinPt.GetHashCode(), MaxPt.GetHashCode());
+    public override readonly int GetHashCode()
+    {
+        return HashCode.Combine(MinPt.GetHashCode(), MaxPt.GetHashCode());
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly double LengthX() => MaxPt.X - MinPt.X;
+    public readonly double LengthX()
+    {
+        return MaxPt.X - MinPt.X;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly double LengthY() => MaxPt.Y - MinPt.Y;
+    public readonly double LengthY()
+    {
+        return MaxPt.Y - MinPt.Y;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly double LengthZ() => MaxPt.Z - MinPt.Z;
+    public readonly double LengthZ()
+    {
+        return MaxPt.Z - MinPt.Z;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public readonly Axis MaxAxis()
     {
-        if (LengthX() >= LengthY() && LengthX() >= LengthZ())
-            return Axis.X;
-        else if (LengthY() >= LengthZ())
-            return Axis.Y;
-        else
-            return Axis.Z;
+        return LengthX() >= LengthY() && LengthX() >= LengthZ() ? Axis.X
+            : LengthY() >= LengthZ() ? Axis.Y
+            : Axis.Z;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public readonly Axis MinAxis()
     {
-        if (LengthX() <= LengthY() && LengthX() <= LengthZ())
-            return Axis.X;
-        else if (LengthY() <= LengthZ())
-            return Axis.Y;
-        else
-            return Axis.Z;
+        return LengthX() <= LengthY() && LengthX() <= LengthZ() ? Axis.X
+            : LengthY() <= LengthZ() ? Axis.Y
+            : Axis.Z;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly double MidX() => (MaxPt.X + MinPt.X) / 2.0;
+    public readonly double MidX()
+    {
+        return (MaxPt.X + MinPt.X) / 2.0;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly double MidY() => (MaxPt.Y + MinPt.Y) / 2.0;
+    public readonly double MidY()
+    {
+        return (MaxPt.Y + MinPt.Y) / 2.0;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly double MidZ() => (MaxPt.Z + MinPt.Z) / 2.0;
+    public readonly double MidZ()
+    {
+        return (MaxPt.Z + MinPt.Z) / 2.0;
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public BoundingBox Offset(double offset)
@@ -263,7 +285,10 @@ public struct BoundingBox : IEquatable<BoundingBox>, IFormattable
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public readonly double Volume() => LengthX() * LengthY() * LengthZ();
+    public readonly double Volume()
+    {
+        return LengthX() * LengthY() * LengthZ();
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override readonly string ToString()

@@ -10,9 +10,9 @@
       },
       "CSharpier.MsBuild": {
         "type": "Direct",
-        "requested": "[0.29.2, )",
-        "resolved": "0.29.2",
-        "contentHash": "Pa7xUpo9Z6qWUTk+gAN1sRlEVqG/tgqK6+OvE/JXUfL3m1euNw5/RGj3bdQF/EyagSTyLDpqi0I8xRi1jzGq3A=="
+        "requested": "[0.30.1, )",
+        "resolved": "0.30.1",
+        "contentHash": "Nkqj4DCp1T1mddz192pKJqsqao6/kOeqrmntFSevypfwCrr/hzWNZX+myaOHdP7cJbeFxx5axT+l2qsQlhkCXA=="
       },
       "JunitXml.TestLogger": {
         "type": "Direct",
@@ -83,8 +83,8 @@
       },
       "Microsoft.Bcl.HashCode": {
         "type": "Transitive",
-        "resolved": "1.1.1",
-        "contentHash": "MalY0Y/uM/LjXtHfX/26l2VtN4LDNZ2OE3aumNOHDLsT4fNYy2hiHXI4CXCqKpNUNm7iJ2brrc4J89UdaL56FA=="
+        "resolved": "6.0.0",
+        "contentHash": "GI4jcoi6eC9ZhNOQylIBaWOQjyGaR8T6N3tC1u8p3EXfndLCVNNWa+Zp+ocjvvS3kNBN09Zma2HXL0ezO0dRfw=="
       },
       "Microsoft.CodeCoverage": {
         "type": "Transitive",
@@ -231,12 +231,12 @@
       "glatzel.algorithm": {
         "type": "Project",
         "dependencies": {
-          "Microsoft.Bcl.HashCode": "[1.1.1, )",
+          "Microsoft.Bcl.HashCode": "[6.0.0, )",
           "NLog": "[5.3.4, )"
         }
       }
     },
-    ".NETFramework,Version=v4.8/win7-x64": {},
+    ".NETFramework,Version=v4.8/win-x64": {},
     "net8.0-windows7.0": {
       "coverlet.collector": {
         "type": "Direct",
@@ -246,9 +246,9 @@
       },
       "CSharpier.MsBuild": {
         "type": "Direct",
-        "requested": "[0.29.2, )",
-        "resolved": "0.29.2",
-        "contentHash": "Pa7xUpo9Z6qWUTk+gAN1sRlEVqG/tgqK6+OvE/JXUfL3m1euNw5/RGj3bdQF/EyagSTyLDpqi0I8xRi1jzGq3A=="
+        "requested": "[0.30.1, )",
+        "resolved": "0.30.1",
+        "contentHash": "Nkqj4DCp1T1mddz192pKJqsqao6/kOeqrmntFSevypfwCrr/hzWNZX+myaOHdP7cJbeFxx5axT+l2qsQlhkCXA=="
       },
       "JunitXml.TestLogger": {
         "type": "Direct",
@@ -314,8 +314,8 @@
       },
       "Microsoft.Bcl.HashCode": {
         "type": "Transitive",
-        "resolved": "1.1.1",
-        "contentHash": "MalY0Y/uM/LjXtHfX/26l2VtN4LDNZ2OE3aumNOHDLsT4fNYy2hiHXI4CXCqKpNUNm7iJ2brrc4J89UdaL56FA=="
+        "resolved": "6.0.0",
+        "contentHash": "GI4jcoi6eC9ZhNOQylIBaWOQjyGaR8T6N3tC1u8p3EXfndLCVNNWa+Zp+ocjvvS3kNBN09Zma2HXL0ezO0dRfw=="
       },
       "Microsoft.CodeCoverage": {
         "type": "Transitive",
@@ -434,11 +434,11 @@
       "glatzel.algorithm": {
         "type": "Project",
         "dependencies": {
-          "Microsoft.Bcl.HashCode": "[1.1.1, )",
+          "Microsoft.Bcl.HashCode": "[6.0.0, )",
           "NLog": "[5.3.4, )"
         }
       }
     },
-    "net8.0-windows7.0/win7-x64": {}
+    "net8.0-windows7.0/win-x64": {}
   }
 }

@@ -4,15 +4,15 @@
     ".NETFramework,Version=v4.8": {
       "CSharpier.MsBuild": {
         "type": "Direct",
-        "requested": "[0.29.2, )",
-        "resolved": "0.29.2",
-        "contentHash": "Pa7xUpo9Z6qWUTk+gAN1sRlEVqG/tgqK6+OvE/JXUfL3m1euNw5/RGj3bdQF/EyagSTyLDpqi0I8xRi1jzGq3A=="
+        "requested": "[0.30.1, )",
+        "resolved": "0.30.1",
+        "contentHash": "Nkqj4DCp1T1mddz192pKJqsqao6/kOeqrmntFSevypfwCrr/hzWNZX+myaOHdP7cJbeFxx5axT+l2qsQlhkCXA=="
       },
       "Microsoft.Bcl.HashCode": {
         "type": "Direct",
-        "requested": "[1.1.1, )",
-        "resolved": "1.1.1",
-        "contentHash": "MalY0Y/uM/LjXtHfX/26l2VtN4LDNZ2OE3aumNOHDLsT4fNYy2hiHXI4CXCqKpNUNm7iJ2brrc4J89UdaL56FA=="
+        "requested": "[6.0.0, )",
+        "resolved": "6.0.0",
+        "contentHash": "GI4jcoi6eC9ZhNOQylIBaWOQjyGaR8T6N3tC1u8p3EXfndLCVNNWa+Zp+ocjvvS3kNBN09Zma2HXL0ezO0dRfw=="
       },
       "NLog": {
         "type": "Direct",
@@ -42,15 +42,15 @@
     "net8.0-windows7.0": {
       "CSharpier.MsBuild": {
         "type": "Direct",
-        "requested": "[0.29.2, )",
-        "resolved": "0.29.2",
-        "contentHash": "Pa7xUpo9Z6qWUTk+gAN1sRlEVqG/tgqK6+OvE/JXUfL3m1euNw5/RGj3bdQF/EyagSTyLDpqi0I8xRi1jzGq3A=="
+        "requested": "[0.30.1, )",
+        "resolved": "0.30.1",
+        "contentHash": "Nkqj4DCp1T1mddz192pKJqsqao6/kOeqrmntFSevypfwCrr/hzWNZX+myaOHdP7cJbeFxx5axT+l2qsQlhkCXA=="
       },
       "Microsoft.Bcl.HashCode": {
         "type": "Direct",
-        "requested": "[1.1.1, )",
-        "resolved": "1.1.1",
-        "contentHash": "MalY0Y/uM/LjXtHfX/26l2VtN4LDNZ2OE3aumNOHDLsT4fNYy2hiHXI4CXCqKpNUNm7iJ2brrc4J89UdaL56FA=="
+        "requested": "[6.0.0, )",
+        "resolved": "6.0.0",
+        "contentHash": "GI4jcoi6eC9ZhNOQylIBaWOQjyGaR8T6N3tC1u8p3EXfndLCVNNWa+Zp+ocjvvS3kNBN09Zma2HXL0ezO0dRfw=="
       },
       "NLog": {
         "type": "Direct",

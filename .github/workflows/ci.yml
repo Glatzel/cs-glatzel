@@ -48,7 +48,7 @@ jobs:
 
       - name: build
         run: dotnet build
-      
+
       - name: test
         run: dotnet test --no-build --logger:junit --collect:"XPlat Code Coverage"
 

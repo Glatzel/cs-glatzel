@@ -48,9 +48,11 @@ jobs:
 
       - name: build
         run: dotnet build
-
+      
+      - run: dotnet tool install --global dotnet-coverage
+      
       - name: test
-        run: dotnet test --no-build --logger:junit --collect:"XPlat Code Coverage"
+        run: ./scripts/test.ps1
 
       - name: Upload cov results to Codecov
         if: ${{ !cancelled() }}
@@ -64,5 +66,5 @@ jobs:
         uses: codecov/test-results-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: "**/TestResults.xml"
+          files: "coverage.xml"
           fail_ci_if_error: true

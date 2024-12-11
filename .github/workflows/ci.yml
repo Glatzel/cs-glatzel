@@ -50,7 +50,7 @@ jobs:
         run: dotnet build
       
       - name: test
-        run: dotnet test --logger:junit --collect:"XPlat Code Coverage"
+        run: dotnet test --no-build --logger:junit --collect:"XPlat Code Coverage"
 
       - name: Upload cov results to Codecov
         if: ${{ !cancelled() }}

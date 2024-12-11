@@ -49,10 +49,8 @@ jobs:
       - name: build
         run: dotnet build
       
-      - run: dotnet tool install --global dotnet-coverage
-      
       - name: test
-        run: ./scripts/test.ps1
+        run: dotnet test --logger:junit --collect:"XPlat Code Coverage"
 
       - name: Upload cov results to Codecov
         if: ${{ !cancelled() }}

@@ -6,4 +6,3 @@ try {dotnet-coverage}
 catch {dotnet tool install --global dotnet-coverage}
 
 dotnet-coverage merge tests/**/TestResults/*/coverage.cobertura.xml  --output coverage.xml --output-format xml
-# Remove-Item tests/**/TestResults -Recurse

@@ -40,7 +40,7 @@ jobs:
         with:
           path: ~/.nuget/packages
           key: nuget-${{ runner.os }}-${{ hashFiles('**/*lock.json') }}
-          restore-keys: ${{ github.event_name == 'push' && null ||  join('nuget-',runner.os) }}
+          restore-keys: ${{ github.event_name == 'push' && null ||  join(['nuget-',runner.os]) }}
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2

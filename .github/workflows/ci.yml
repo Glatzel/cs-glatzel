@@ -34,14 +34,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: restore dotnet cache
-        id: restore-cache
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.nuget/packages
-          key: nuget-${{ runner.os }}-${{ hashFiles('**/*lock.json') }}
-          restore-keys: ${{ github.event_name == 'push' && null ||  format('nuget-{0}',runner.os) }}
-
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
         with:
@@ -67,9 +59,3 @@ jobs:
           files: ./tests/*/TestResults/TestResults.xml
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
-
-      - uses: actions/cache/save@v4
-        if: ${{steps.restore-cache.outputs.cache-matched-key==''}}
-        with:
-          path: ~/.nuget/packages
-          key: nuget-${{ runner.os }}-${{ hashFiles('**/*lock.json') }}

@@ -72,4 +72,4 @@ jobs:
         if: ${{steps.restore-cache.outputs.cache-matched-key==''}}
         with:
           path: ~/.nuget/packages
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*lock.json') }}

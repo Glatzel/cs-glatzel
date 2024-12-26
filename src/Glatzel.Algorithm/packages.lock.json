@@ -22,21 +22,21 @@
       },
       "Roslynator.Analyzers": {
         "type": "Direct",
-        "requested": "[4.12.9, )",
-        "resolved": "4.12.9",
-        "contentHash": "X6lDpN/D5wuinq37KIx+l3GSUe9No+8bCjGBTI5sEEtxapLztkHg6gzNVhMXpXw8P+/5gFYxTXJ5Pf8O4iNz/w=="
+        "requested": "[4.12.10, )",
+        "resolved": "4.12.10",
+        "contentHash": "Wecq3nfhTvnJPxX87hKbjMdX1xeCAMJf9rdBX3nQLTntQs9v0fFbUB2eQSSOArXMuFh7MxjLWaL4+b6XMi1NDA=="
       },
       "Roslynator.CodeAnalysis.Analyzers": {
         "type": "Direct",
-        "requested": "[4.12.9, )",
-        "resolved": "4.12.9",
-        "contentHash": "EFELMNQjWW32pYOP0a5gRulOGs/IAKHrlQ+8rEtpzeNEQ35Kw1ba7q9f9PNlY8fz/7+oK2HQQ7hGHVo+ke961g=="
+        "requested": "[4.12.10, )",
+        "resolved": "4.12.10",
+        "contentHash": "P/8rraJ0lDO792C8VajyKsaljMR4pWheoSv6bJnCspydf8gNZe+r2JJNis0IxMO2a8vLOyB+8CMIaVLIUndSNQ=="
       },
       "Roslynator.Formatting.Analyzers": {
         "type": "Direct",
-        "requested": "[4.12.9, )",
-        "resolved": "4.12.9",
-        "contentHash": "DOS/WK8xLvqPgD/SDVHQ6vI4T5uhDQftPuCXP1jB0TztzPrlblNud1F+9GhjzPIQrxxzkBmG65rihNErp2WVhg=="
+        "requested": "[4.12.10, )",
+        "resolved": "4.12.10",
+        "contentHash": "Yz0OhQtuECTPBMoURxcv1XKgquVpUcUOpRGac8tormJSJzbMYK8qvVSvjIvQkQOrfYPLFa8aak5200BEAq/X9Q=="
       }
     },
     "net8.0-windows7.0": {
@@ -60,21 +60,21 @@
       },
       "Roslynator.Analyzers": {
         "type": "Direct",
-        "requested": "[4.12.9, )",
-        "resolved": "4.12.9",
-        "contentHash": "X6lDpN/D5wuinq37KIx+l3GSUe9No+8bCjGBTI5sEEtxapLztkHg6gzNVhMXpXw8P+/5gFYxTXJ5Pf8O4iNz/w=="
+        "requested": "[4.12.10, )",
+        "resolved": "4.12.10",
+        "contentHash": "Wecq3nfhTvnJPxX87hKbjMdX1xeCAMJf9rdBX3nQLTntQs9v0fFbUB2eQSSOArXMuFh7MxjLWaL4+b6XMi1NDA=="
       },
       "Roslynator.CodeAnalysis.Analyzers": {
         "type": "Direct",
-        "requested": "[4.12.9, )",
-        "resolved": "4.12.9",
-        "contentHash": "EFELMNQjWW32pYOP0a5gRulOGs/IAKHrlQ+8rEtpzeNEQ35Kw1ba7q9f9PNlY8fz/7+oK2HQQ7hGHVo+ke961g=="
+        "requested": "[4.12.10, )",
+        "resolved": "4.12.10",
+        "contentHash": "P/8rraJ0lDO792C8VajyKsaljMR4pWheoSv6bJnCspydf8gNZe+r2JJNis0IxMO2a8vLOyB+8CMIaVLIUndSNQ=="
       },
       "Roslynator.Formatting.Analyzers": {
         "type": "Direct",
-        "requested": "[4.12.9, )",
-        "resolved": "4.12.9",
-        "contentHash": "DOS/WK8xLvqPgD/SDVHQ6vI4T5uhDQftPuCXP1jB0TztzPrlblNud1F+9GhjzPIQrxxzkBmG65rihNErp2WVhg=="
+        "requested": "[4.12.10, )",
+        "resolved": "4.12.10",
+        "contentHash": "Yz0OhQtuECTPBMoURxcv1XKgquVpUcUOpRGac8tormJSJzbMYK8qvVSvjIvQkQOrfYPLFa8aak5200BEAq/X9Q=="
       }
     }
   }

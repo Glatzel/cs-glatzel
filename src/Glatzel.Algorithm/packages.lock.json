@@ -4,15 +4,24 @@
     ".NETFramework,Version=v4.8": {
       "CSharpier.MsBuild": {
         "type": "Direct",
-        "requested": "[0.30.3, )",
-        "resolved": "0.30.3",
-        "contentHash": "K7aZIOVzHU9L9ck3l+7nWW1GnuvJt3Zqj23FrL4r17pJPAxqbEqEslXsYK9P0SWl9+oS+FozI6vKXonI6hrYOQ=="
+        "requested": "[0.30.4, )",
+        "resolved": "0.30.4",
+        "contentHash": "nhMgV9rN1x5wIdfdQ66fEZyAFBeFuGDxTYfUno5ylpk3jqhhAtCBwkjPd8TsvBHTu2KlyNHufrxWLT5HUl4TFQ=="
       },
       "Microsoft.Bcl.HashCode": {
         "type": "Direct",
         "requested": "[6.0.0, )",
         "resolved": "6.0.0",
         "contentHash": "GI4jcoi6eC9ZhNOQylIBaWOQjyGaR8T6N3tC1u8p3EXfndLCVNNWa+Zp+ocjvvS3kNBN09Zma2HXL0ezO0dRfw=="
+      },
+      "Microsoft.NETFramework.ReferenceAssemblies": {
+        "type": "Direct",
+        "requested": "[1.0.3, )",
+        "resolved": "1.0.3",
+        "contentHash": "vUc9Npcs14QsyOD01tnv/m8sQUnGTGOw1BCmKcv77LBJY7OxhJ+zJF7UD/sCL3lYNFuqmQEVlkfS4Quif6FyYg==",
+        "dependencies": {
+          "Microsoft.NETFramework.ReferenceAssemblies.net48": "1.0.3"
+        }
       },
       "NLog": {
         "type": "Direct",
@@ -37,14 +46,19 @@
         "requested": "[4.12.10, )",
         "resolved": "4.12.10",
         "contentHash": "Yz0OhQtuECTPBMoURxcv1XKgquVpUcUOpRGac8tormJSJzbMYK8qvVSvjIvQkQOrfYPLFa8aak5200BEAq/X9Q=="
+      },
+      "Microsoft.NETFramework.ReferenceAssemblies.net48": {
+        "type": "Transitive",
+        "resolved": "1.0.3",
+        "contentHash": "zMk4D+9zyiEWByyQ7oPImPN/Jhpj166Ky0Nlla4eXlNL8hI/BtSJsgR8Inldd4NNpIAH3oh8yym0W2DrhXdSLQ=="
       }
     },
     "net8.0-windows7.0": {
       "CSharpier.MsBuild": {
         "type": "Direct",
-        "requested": "[0.30.3, )",
-        "resolved": "0.30.3",
-        "contentHash": "K7aZIOVzHU9L9ck3l+7nWW1GnuvJt3Zqj23FrL4r17pJPAxqbEqEslXsYK9P0SWl9+oS+FozI6vKXonI6hrYOQ=="
+        "requested": "[0.30.4, )",
+        "resolved": "0.30.4",
+        "contentHash": "nhMgV9rN1x5wIdfdQ66fEZyAFBeFuGDxTYfUno5ylpk3jqhhAtCBwkjPd8TsvBHTu2KlyNHufrxWLT5HUl4TFQ=="
       },
       "Microsoft.Bcl.HashCode": {
         "type": "Direct",
